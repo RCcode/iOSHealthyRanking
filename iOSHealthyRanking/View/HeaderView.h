@@ -1,0 +1,15 @@
+//
+//  HeaderView.h
+//  iOSHealthyRanking
+//
+//  Created by TCH on 15/5/14.
+//  Copyright (c) 2015年 com.rcplatform. All rights reserved.
+//
+
+#import "RC_View.h"
+
+@interface HeaderView : RC_View
+
++ (id)instanceHeaderView;
+
+@end

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderView" rowHeight="229" id="KGk-i7-Jjw" customClass="HeaderCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="egI-qc-Zvd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="256" id="O6Q-Lw-jV4"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H8W-CZ-Cbc">
+                        <rect key="frame" x="125" y="220" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="hRE-lM-JBy"/>
+                            <constraint firstAttribute="height" constant="70" id="vCs-iB-mAE"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerX" secondItem="H8W-CZ-Cbc" secondAttribute="centerX" id="0f0-aN-FeZ"/>
+                    <constraint firstItem="H8W-CZ-Cbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="220" id="a8x-Jn-EKJ"/>
+                    <constraint firstAttribute="trailing" secondItem="egI-qc-Zvd" secondAttribute="trailing" id="dIU-sl-6wL"/>
+                    <constraint firstItem="egI-qc-Zvd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="s3g-Wf-gf2"/>
+                    <constraint firstItem="egI-qc-Zvd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yqT-QI-O33"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="coverImageView" destination="egI-qc-Zvd" id="dV8-fZ-YoD"/>
+                <outlet property="userIconImageView" destination="H8W-CZ-Cbc" id="blb-TP-Ide"/>
+            </connections>
+            <point key="canvasLocation" x="338" y="231"/>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -14,6 +14,10 @@
 
 - (void)registerToken:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
+- (void)postUserDate:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+
+- (void)getRanking:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+
 - (void)cancleAllRequests;
 
 @end

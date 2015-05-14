@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F9857961B048318007A151C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857941B048318007A151C /* LoginViewController.m */; };
+		6F9857971B048318007A151C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9857951B048318007A151C /* LoginViewController.xib */; };
+		6F98579B1B048372007A151C /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857991B048372007A151C /* RankingViewController.m */; };
+		6F98579C1B048372007A151C /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F98579A1B048372007A151C /* RankingViewController.xib */; };
+		6F9857A51B0483A7007A151C /* UserHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857A31B0483A7007A151C /* UserHomeViewController.m */; };
+		6F9857A61B0483A7007A151C /* UserHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9857A41B0483A7007A151C /* UserHomeViewController.xib */; };
 		6FA3D7A81B0323870042EABD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7A71B0323870042EABD /* main.m */; };
 		6FA3D7AB1B0323870042EABD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7AA1B0323870042EABD /* AppDelegate.m */; };
-		6FA3D7AE1B0323870042EABD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7AD1B0323870042EABD /* ViewController.m */; };
-		6FA3D7B11B0323870042EABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FA3D7AF1B0323870042EABD /* Main.storyboard */; };
 		6FA3D7B31B0323870042EABD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FA3D7B21B0323870042EABD /* Images.xcassets */; };
-		6FA3D7B61B0323870042EABD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA3D7B41B0323870042EABD /* LaunchScreen.xib */; };
 		6FA3D7C21B0323880042EABD /* iOSHealthyRankingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7C11B0323880042EABD /* iOSHealthyRankingTests.m */; };
 		6FA3D8301B03247F0042EABD /* CMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7CF1B03247F0042EABD /* CMethods.m */; };
 		6FA3D8311B03247F0042EABD /* RC_LocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D7D21B03247F0042EABD /* RC_LocalDataManager.m */; };
@@ -55,6 +58,14 @@
 		6FA3D85E1B0325140042EABD /* RC_NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D85A1B0325140042EABD /* RC_NavigationController.m */; };
 		6FA3D85F1B0325140042EABD /* RC_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D85C1B0325140042EABD /* RC_View.m */; };
 		6FA3D8641B0326200042EABD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA3D8631B0326200042EABD /* libsqlite3.dylib */; };
+		6FB0C6931B04B25C00621B1C /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C6921B04B25C00621B1C /* HeaderView.m */; };
+		6FB0C6951B04B27000621B1C /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6941B04B27000621B1C /* HeaderView.xib */; };
+		6FB0C6991B04B5C900621B1C /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C6971B04B5C900621B1C /* UserCell.m */; };
+		6FB0C69A1B04B5C900621B1C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6981B04B5C900621B1C /* UserCell.xib */; };
+		6FB0C69E1B04BDD300621B1C /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C69C1B04BDD300621B1C /* HeaderCell.m */; };
+		6FB0C69F1B04BDD300621B1C /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C69D1B04BDD300621B1C /* HeaderCell.xib */; };
+		6FB0C6A11B04CA9200621B1C /* 74B10FBCB7E8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */; };
+		6FDBD1B21B0484A9003986F2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,16 +79,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F9857931B048318007A151C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6F9857941B048318007A151C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6F9857951B048318007A151C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		6F9857981B048372007A151C /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingViewController.h; sourceTree = "<group>"; };
+		6F9857991B048372007A151C /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
+		6F98579A1B048372007A151C /* RankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingViewController.xib; sourceTree = "<group>"; };
+		6F9857A21B0483A7007A151C /* UserHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHomeViewController.h; sourceTree = "<group>"; };
+		6F9857A31B0483A7007A151C /* UserHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHomeViewController.m; sourceTree = "<group>"; };
+		6F9857A41B0483A7007A151C /* UserHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHomeViewController.xib; sourceTree = "<group>"; };
 		6FA3D7A21B0323870042EABD /* iOSHealthyRanking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSHealthyRanking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA3D7A61B0323870042EABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FA3D7A71B0323870042EABD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6FA3D7A91B0323870042EABD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6FA3D7AA1B0323870042EABD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6FA3D7AC1B0323870042EABD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6FA3D7AD1B0323870042EABD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6FA3D7B01B0323870042EABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FA3D7B21B0323870042EABD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6FA3D7B51B0323870042EABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6FA3D7BB1B0323880042EABD /* iOSHealthyRankingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSHealthyRankingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FA3D7C01B0323880042EABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FA3D7C11B0323880042EABD /* iOSHealthyRankingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSHealthyRankingTests.m; sourceTree = "<group>"; };
@@ -178,6 +194,17 @@
 		6FA3D85C1B0325140042EABD /* RC_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_View.m; sourceTree = "<group>"; };
 		6FA3D8601B0325240042EABD /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		6FA3D8631B0326200042EABD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		6FB0C6911B04B25C00621B1C /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		6FB0C6921B04B25C00621B1C /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		6FB0C6941B04B27000621B1C /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		6FB0C6961B04B5C900621B1C /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		6FB0C6971B04B5C900621B1C /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		6FB0C6981B04B5C900621B1C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		6FB0C69B1B04BDD300621B1C /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
+		6FB0C69C1B04BDD300621B1C /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
+		6FB0C69D1B04BDD300621B1C /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 74B10FBCB7E8.jpg; sourceTree = "<group>"; };
+		6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA3D8641B0326200042EABD /* libsqlite3.dylib in Frameworks */,
+				6FDBD1B21B0484A9003986F2 /* FacebookSDK.framework in Frameworks */,
 				6FA3D8341B03247F0042EABD /* libGoogleAdMobAds.a in Frameworks */,
 				6FA3D8541B03247F0042EABD /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -204,6 +232,8 @@
 		6FA3D7991B0323870042EABD = {
 			isa = PBXGroup;
 			children = (
+				6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */,
+				6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */,
 				6FA3D8631B0326200042EABD /* libsqlite3.dylib */,
 				6FA3D7A41B0323870042EABD /* iOSHealthyRanking */,
 				6FA3D7BE1B0323880042EABD /* iOSHealthyRankingTests */,
@@ -223,14 +253,20 @@
 		6FA3D7A41B0323870042EABD /* iOSHealthyRanking */ = {
 			isa = PBXGroup;
 			children = (
+				6FB0C6901B04B21100621B1C /* View */,
 				6FA3D7CB1B03247F0042EABD /* PublicShare */,
 				6FA3D7A91B0323870042EABD /* AppDelegate.h */,
 				6FA3D7AA1B0323870042EABD /* AppDelegate.m */,
-				6FA3D7AC1B0323870042EABD /* ViewController.h */,
-				6FA3D7AD1B0323870042EABD /* ViewController.m */,
-				6FA3D7AF1B0323870042EABD /* Main.storyboard */,
+				6F9857931B048318007A151C /* LoginViewController.h */,
+				6F9857941B048318007A151C /* LoginViewController.m */,
+				6F9857951B048318007A151C /* LoginViewController.xib */,
+				6F9857981B048372007A151C /* RankingViewController.h */,
+				6F9857991B048372007A151C /* RankingViewController.m */,
+				6F98579A1B048372007A151C /* RankingViewController.xib */,
+				6F9857A21B0483A7007A151C /* UserHomeViewController.h */,
+				6F9857A31B0483A7007A151C /* UserHomeViewController.m */,
+				6F9857A41B0483A7007A151C /* UserHomeViewController.xib */,
 				6FA3D7B21B0323870042EABD /* Images.xcassets */,
-				6FA3D7B41B0323870042EABD /* LaunchScreen.xib */,
 				6FA3D7A51B0323870042EABD /* Supporting Files */,
 			);
 			path = iOSHealthyRanking;
@@ -469,6 +505,22 @@
 			path = BaseClass;
 			sourceTree = "<group>";
 		};
+		6FB0C6901B04B21100621B1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6FB0C6911B04B25C00621B1C /* HeaderView.h */,
+				6FB0C6921B04B25C00621B1C /* HeaderView.m */,
+				6FB0C6941B04B27000621B1C /* HeaderView.xib */,
+				6FB0C6961B04B5C900621B1C /* UserCell.h */,
+				6FB0C6971B04B5C900621B1C /* UserCell.m */,
+				6FB0C6981B04B5C900621B1C /* UserCell.xib */,
+				6FB0C69B1B04BDD300621B1C /* HeaderCell.h */,
+				6FB0C69C1B04BDD300621B1C /* HeaderCell.m */,
+				6FB0C69D1B04BDD300621B1C /* HeaderCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -549,9 +601,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FA3D7B11B0323870042EABD /* Main.storyboard in Resources */,
-				6FA3D7B61B0323870042EABD /* LaunchScreen.xib in Resources */,
 				6FA3D7B31B0323870042EABD /* Images.xcassets in Resources */,
+				6FB0C6951B04B27000621B1C /* HeaderView.xib in Resources */,
+				6FB0C69F1B04BDD300621B1C /* HeaderCell.xib in Resources */,
+				6FB0C69A1B04B5C900621B1C /* UserCell.xib in Resources */,
+				6F9857A61B0483A7007A151C /* UserHomeViewController.xib in Resources */,
+				6F9857971B048318007A151C /* LoginViewController.xib in Resources */,
+				6FB0C6A11B04CA9200621B1C /* 74B10FBCB7E8.jpg in Resources */,
+				6F98579C1B048372007A151C /* RankingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +630,6 @@
 				6FA3D83A1B03247F0042EABD /* AFURLConnectionOperation.m in Sources */,
 				6FA3D8301B03247F0042EABD /* CMethods.m in Sources */,
 				6FA3D8401B03247F0042EABD /* FMDatabasePool.m in Sources */,
-				6FA3D7AE1B0323870042EABD /* ViewController.m in Sources */,
 				6FA3D8311B03247F0042EABD /* RC_LocalDataManager.m in Sources */,
 				6FA3D84D1B03247F0042EABD /* UIButton+WebCache.m in Sources */,
 				6FA3D8411B03247F0042EABD /* FMDatabaseQueue.m in Sources */,
@@ -583,18 +639,22 @@
 				6FA3D83F1B03247F0042EABD /* FMDatabaseAdditions.m in Sources */,
 				6FA3D85E1B0325140042EABD /* RC_NavigationController.m in Sources */,
 				6FA3D8521B03247F0042EABD /* UIImageView+WebCache.m in Sources */,
+				6FB0C6991B04B5C900621B1C /* UserCell.m in Sources */,
 				6FA3D83C1B03247F0042EABD /* AFURLResponseSerialization.m in Sources */,
 				6FA3D85F1B0325140042EABD /* RC_View.m in Sources */,
 				6FA3D8421B03247F0042EABD /* FMResultSet.m in Sources */,
 				6FA3D8451B03247F0042EABD /* NSData+ImageContentType.m in Sources */,
+				6F98579B1B048372007A151C /* RankingViewController.m in Sources */,
 				6FA3D8491B03247F0042EABD /* SDWebImageDownloader.m in Sources */,
 				6FA3D7AB1B0323870042EABD /* AppDelegate.m in Sources */,
+				6F9857961B048318007A151C /* LoginViewController.m in Sources */,
 				6FA3D83B1B03247F0042EABD /* AFURLRequestSerialization.m in Sources */,
 				6FA3D8511B03247F0042EABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				6FA3D8391B03247F0042EABD /* AFSecurityPolicy.m in Sources */,
 				6FA3D8351B03247F0042EABD /* AFHTTPRequestOperation.m in Sources */,
 				6FA3D8431B03247F0042EABD /* Reachability.m in Sources */,
 				6FA3D83D1B03247F0042EABD /* AFURLSessionManager.m in Sources */,
+				6FB0C6931B04B25C00621B1C /* HeaderView.m in Sources */,
 				6FA3D8531B03247F0042EABD /* UIView+WebCacheOperation.m in Sources */,
 				6FA3D8471B03247F0042EABD /* SDWebImageCompat.m in Sources */,
 				6FA3D7A81B0323870042EABD /* main.m in Sources */,
@@ -603,10 +663,12 @@
 				6FA3D8371B03247F0042EABD /* AFHTTPSessionManager.m in Sources */,
 				6FA3D84C1B03247F0042EABD /* SDWebImagePrefetcher.m in Sources */,
 				6FA3D8321B03247F0042EABD /* IS_MobAndAnalyticsManager.m in Sources */,
+				6F9857A51B0483A7007A151C /* UserHomeViewController.m in Sources */,
 				6FA3D84A1B03247F0042EABD /* SDWebImageDownloaderOperation.m in Sources */,
 				6FA3D8381B03247F0042EABD /* AFNetworkReachabilityManager.m in Sources */,
 				6FA3D85D1B0325140042EABD /* RC_BaseViewController.m in Sources */,
 				6FA3D84B1B03247F0042EABD /* SDWebImageManager.m in Sources */,
+				6FB0C69E1B04BDD300621B1C /* HeaderCell.m in Sources */,
 				6FA3D8501B03247F0042EABD /* UIImage+WebP.m in Sources */,
 				6FA3D8361B03247F0042EABD /* AFHTTPRequestOperationManager.m in Sources */,
 				6FA3D8461B03247F0042EABD /* SDImageCache.m in Sources */,
@@ -630,25 +692,6 @@
 			targetProxy = 6FA3D7BC1B0323880042EABD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6FA3D7AF1B0323870042EABD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6FA3D7B01B0323870042EABD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6FA3D7B41B0323870042EABD /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6FA3D7B51B0323870042EABD /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6FA3D7C31B0323880042EABD /* Debug */ = {
@@ -735,8 +778,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSHealthyRanking/PrefixHeader.pch";
 				INFOPLIST_FILE = iOSHealthyRanking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -752,8 +801,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSHealthyRanking/PrefixHeader.pch";
 				INFOPLIST_FILE = iOSHealthyRanking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -818,6 +873,7 @@
 				6FA3D7C71B0323880042EABD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FA3D7C81B0323880042EABD /* Build configuration list for PBXNativeTarget "iOSHealthyRankingTests" */ = {
 			isa = XCConfigurationList;
@@ -826,6 +882,7 @@
 				6FA3D7CA1B0323880042EABD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

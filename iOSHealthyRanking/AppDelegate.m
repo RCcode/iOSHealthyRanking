@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "LoginViewController.h"
+#import "RankingViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -16,8 +19,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    LoginViewController *loginViewController = [[LoginViewController alloc]init];
+    self.window.rootViewController = loginViewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [FBSession.activeSession handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

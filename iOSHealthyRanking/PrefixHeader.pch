@@ -17,13 +17,13 @@
 #import "RC_View.h"
 #import "CMethods.h"
 #import "Public.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 
 //#import <AssetsLibrary/AssetsLibrary.h>
 //#import <Foundation/Foundation.h>
 //#import "IS_MobAndAnalyticsManager.h"
 //#import "IS_Tools.h"
-//#import "IS_RequestManager.h"
+#import "RC_RequestManager.h"
 
 #endif
 

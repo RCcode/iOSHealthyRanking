@@ -10,6 +10,10 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 
+#define PostUserInfoURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/updateHealthyData.do"
+
+#define GetRankingURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/getHealthyData.do"
+
 @interface RC_RequestManager()
 
 @property (nonatomic,strong) AFHTTPRequestOperationManager *operation;
@@ -89,6 +93,51 @@ static RC_RequestManager *requestManager = nil;
     [requestSerializer setTimeoutInterval:30];
     
     [self requestServiceWithPost:kPushURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+#pragma mark -
+#pragma mark 上传用户信息
+
+- (void)postUserDate:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    [self requestServiceWithPost:PostUserInfoURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+#pragma mark -
+#pragma mark 获取排名
+
+- (void)getRanking:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    [self requestServiceWithPost:GetRankingURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
         if (success) {
             success(responseObject);
         }
