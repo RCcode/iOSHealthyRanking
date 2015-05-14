@@ -1,0 +1,37 @@
+//
+//  PrefixHeader.pch
+//  iOSHealthyRanking
+//
+//  Created by TCH on 15/5/13.
+//  Copyright (c) 2015年 com.rcplatform. All rights reserved.
+//
+
+#ifndef iOSHealthyRanking_PrefixHeader_pch
+#define iOSHealthyRanking_PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import "RC_BaseViewController.h"
+#import "RC_NavigationController.h"
+#import "RC_View.h"
+#import "CMethods.h"
+#import "Public.h"
+
+
+//#import <AssetsLibrary/AssetsLibrary.h>
+//#import <Foundation/Foundation.h>
+//#import "IS_MobAndAnalyticsManager.h"
+//#import "IS_Tools.h"
+//#import "IS_RequestManager.h"
+
+#endif
+
+#ifdef DEBUG
+#define CLog(format, ...) NSLog(format, ## __VA_ARGS__)
+#else
+#define CLog(format, ...)
+#endif
+
+
+#endif
