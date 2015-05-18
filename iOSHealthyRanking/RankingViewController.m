@@ -7,9 +7,9 @@
 //
 
 #import "RankingViewController.h"
-#import "HeaderView.h"
 #import "UserCell.h"
 #import "HeaderCell.h"
+#import "UserHomeViewController.h"
 
 @interface RankingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -19,8 +19,15 @@
 
 @implementation RankingViewController
 
+-(void)setUserInfo:(UserInfo *)userInfo
+{
+    _userInfo = userInfo;
+    [_tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor redColor];
     self.navigationController.navigationBarHidden = YES;
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -41,8 +48,10 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"HeaderCell" owner:self options:nil]lastObject];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [((HeaderCell *)cell).coverImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
-        [((HeaderCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
+//        [((HeaderCell *)cell).coverImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
+//        [((HeaderCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
+        [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:nil];
+        [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:nil];
     }
     else
     {
@@ -50,6 +59,7 @@
         cell = (UserCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"UserCell" owner:self options:nil]lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         [((UserCell *)cell).lblUserName setText:[NSString stringWithFormat:@"userName%d",indexPath.row]];
         [((UserCell *)cell).lblStepCount setText:@"23456"];
@@ -74,12 +84,6 @@
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    HeaderView *headerView = [HeaderView instanceHeaderView];
-    return headerView;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;
@@ -91,6 +95,16 @@
 }
 
 #pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return;
+    }
+    UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
+    userHomeViewController.userInfo = _userInfo;
+    [self.navigationController pushViewController:userHomeViewController animated:YES];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

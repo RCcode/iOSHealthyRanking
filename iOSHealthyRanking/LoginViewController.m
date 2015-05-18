@@ -34,8 +34,62 @@
 }
 
 - (IBAction)loginFacebook:(id)sender {
-    [self login];
+//    [self login];
+     __weak LoginViewController *weakSelf = self;
+    [[FacebookManager shareManager]loginSuccess:^{
+        [weakSelf successLogin1];
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"successLogin"];
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
+
+-(void)successLogin1
+{
+    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *userInfo) {
+        NSLog(@"%@",userInfo);
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] loadfriendsSuccess:^(NSArray *friends) {
+        NSLog(@"%@",friends);
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getCoverGraphPathSuccess:^(NSDictionary *dic) {
+        NSLog(@"%@",dic);
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
+        NSLog(@"%@",dic);
+    } andFailed:^(NSError *error) {
+        
+    }];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
+    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000007",@"1000006"],@"facebookid",@"20150513",@"dateid", nil];
+    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    RankingViewController *rankingViewController = [[RankingViewController alloc]init];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:rankingViewController];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
 
 -(void)fbResync
 {
@@ -95,21 +149,21 @@
         
     }
     
-//    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
-//    
-//    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
-//    } andFailed:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-//    
-//    
-//    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000007",@"1000006"],@"facebookid",@"20150513",@"dateid", nil];
-//    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
-//    } andFailed:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+    
+    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
+    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000007",@"1000006"],@"facebookid",@"20150513",@"dateid", nil];
+    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
     
 }
 

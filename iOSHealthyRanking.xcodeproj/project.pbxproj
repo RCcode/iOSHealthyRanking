@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F66705D1B098DDC006E425A /* HealthKit.framework */; };
+		6F6670621B09CBCB006E425A /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6670611B09CBCB006E425A /* HealthManager.m */; };
+		6F9209B31B05981D00AD4D8A /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9209B21B05981D00AD4D8A /* FacebookManager.m */; };
+		6F9209C41B06030200AD4D8A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9209C31B06030200AD4D8A /* UserInfo.m */; };
 		6F9857961B048318007A151C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857941B048318007A151C /* LoginViewController.m */; };
 		6F9857971B048318007A151C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9857951B048318007A151C /* LoginViewController.xib */; };
 		6F98579B1B048372007A151C /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857991B048372007A151C /* RankingViewController.m */; };
@@ -58,8 +62,6 @@
 		6FA3D85E1B0325140042EABD /* RC_NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D85A1B0325140042EABD /* RC_NavigationController.m */; };
 		6FA3D85F1B0325140042EABD /* RC_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3D85C1B0325140042EABD /* RC_View.m */; };
 		6FA3D8641B0326200042EABD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA3D8631B0326200042EABD /* libsqlite3.dylib */; };
-		6FB0C6931B04B25C00621B1C /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C6921B04B25C00621B1C /* HeaderView.m */; };
-		6FB0C6951B04B27000621B1C /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6941B04B27000621B1C /* HeaderView.xib */; };
 		6FB0C6991B04B5C900621B1C /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C6971B04B5C900621B1C /* UserCell.m */; };
 		6FB0C69A1B04B5C900621B1C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6981B04B5C900621B1C /* UserCell.xib */; };
 		6FB0C69E1B04BDD300621B1C /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C69C1B04BDD300621B1C /* HeaderCell.m */; };
@@ -79,6 +81,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F66705D1B098DDC006E425A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		6F6670601B09CBCB006E425A /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
+		6F6670611B09CBCB006E425A /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
+		6F9209B11B05981D00AD4D8A /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		6F9209B21B05981D00AD4D8A /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
+		6F9209B51B06000300AD4D8A /* iOSHealthyRanking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iOSHealthyRanking.entitlements; sourceTree = "<group>"; };
+		6F9209C21B06030200AD4D8A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		6F9209C31B06030200AD4D8A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		6F9857931B048318007A151C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6F9857941B048318007A151C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6F9857951B048318007A151C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -194,9 +204,6 @@
 		6FA3D85C1B0325140042EABD /* RC_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_View.m; sourceTree = "<group>"; };
 		6FA3D8601B0325240042EABD /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		6FA3D8631B0326200042EABD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		6FB0C6911B04B25C00621B1C /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
-		6FB0C6921B04B25C00621B1C /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
-		6FB0C6941B04B27000621B1C /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		6FB0C6961B04B5C900621B1C /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		6FB0C6971B04B5C900621B1C /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		6FB0C6981B04B5C900621B1C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -216,6 +223,7 @@
 				6FDBD1B21B0484A9003986F2 /* FacebookSDK.framework in Frameworks */,
 				6FA3D8341B03247F0042EABD /* libGoogleAdMobAds.a in Frameworks */,
 				6FA3D8541B03247F0042EABD /* libMobClickLibrary.a in Frameworks */,
+				6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,9 +237,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F66705F1B09CBAA006E425A /* HealthManager */ = {
+			isa = PBXGroup;
+			children = (
+				6F6670601B09CBCB006E425A /* HealthManager.h */,
+				6F6670611B09CBCB006E425A /* HealthManager.m */,
+			);
+			path = HealthManager;
+			sourceTree = "<group>";
+		};
+		6F9209B01B0597FA00AD4D8A /* FacebookManager */ = {
+			isa = PBXGroup;
+			children = (
+				6F9209B11B05981D00AD4D8A /* FacebookManager.h */,
+				6F9209B21B05981D00AD4D8A /* FacebookManager.m */,
+			);
+			path = FacebookManager;
+			sourceTree = "<group>";
+		};
+		6F9209B41B05FE6300AD4D8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F9209C21B06030200AD4D8A /* UserInfo.h */,
+				6F9209C31B06030200AD4D8A /* UserInfo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6FA3D7991B0323870042EABD = {
 			isa = PBXGroup;
 			children = (
+				6F66705D1B098DDC006E425A /* HealthKit.framework */,
 				6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */,
 				6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */,
 				6FA3D8631B0326200042EABD /* libsqlite3.dylib */,
@@ -253,6 +289,8 @@
 		6FA3D7A41B0323870042EABD /* iOSHealthyRanking */ = {
 			isa = PBXGroup;
 			children = (
+				6F9209B51B06000300AD4D8A /* iOSHealthyRanking.entitlements */,
+				6F9209B41B05FE6300AD4D8A /* Model */,
 				6FB0C6901B04B21100621B1C /* View */,
 				6FA3D7CB1B03247F0042EABD /* PublicShare */,
 				6FA3D7A91B0323870042EABD /* AppDelegate.h */,
@@ -313,6 +351,8 @@
 		6FA3D7CC1B03247F0042EABD /* RCShare */ = {
 			isa = PBXGroup;
 			children = (
+				6F66705F1B09CBAA006E425A /* HealthManager */,
+				6F9209B01B0597FA00AD4D8A /* FacebookManager */,
 				6FA3D7CD1B03247F0042EABD /* C Methods */,
 				6FA3D7D01B03247F0042EABD /* LocalDataManager */,
 				6FA3D7D31B03247F0042EABD /* MobAndAnalyticsManager */,
@@ -508,9 +548,6 @@
 		6FB0C6901B04B21100621B1C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6FB0C6911B04B25C00621B1C /* HeaderView.h */,
-				6FB0C6921B04B25C00621B1C /* HeaderView.m */,
-				6FB0C6941B04B27000621B1C /* HeaderView.xib */,
 				6FB0C6961B04B5C900621B1C /* UserCell.h */,
 				6FB0C6971B04B5C900621B1C /* UserCell.m */,
 				6FB0C6981B04B5C900621B1C /* UserCell.xib */,
@@ -570,6 +607,12 @@
 				TargetAttributes = {
 					6FA3D7A11B0323870042EABD = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = QSHGBVZA56;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					6FA3D7BA1B0323880042EABD = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -602,7 +645,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA3D7B31B0323870042EABD /* Images.xcassets in Resources */,
-				6FB0C6951B04B27000621B1C /* HeaderView.xib in Resources */,
 				6FB0C69F1B04BDD300621B1C /* HeaderCell.xib in Resources */,
 				6FB0C69A1B04B5C900621B1C /* UserCell.xib in Resources */,
 				6F9857A61B0483A7007A151C /* UserHomeViewController.xib in Resources */,
@@ -636,11 +678,13 @@
 				6FA3D84F1B03247F0042EABD /* UIImage+MultiFormat.m in Sources */,
 				6FA3D83E1B03247F0042EABD /* FMDatabase.m in Sources */,
 				6FA3D8481B03247F0042EABD /* SDWebImageDecoder.m in Sources */,
+				6F9209B31B05981D00AD4D8A /* FacebookManager.m in Sources */,
 				6FA3D83F1B03247F0042EABD /* FMDatabaseAdditions.m in Sources */,
 				6FA3D85E1B0325140042EABD /* RC_NavigationController.m in Sources */,
 				6FA3D8521B03247F0042EABD /* UIImageView+WebCache.m in Sources */,
 				6FB0C6991B04B5C900621B1C /* UserCell.m in Sources */,
 				6FA3D83C1B03247F0042EABD /* AFURLResponseSerialization.m in Sources */,
+				6F9209C41B06030200AD4D8A /* UserInfo.m in Sources */,
 				6FA3D85F1B0325140042EABD /* RC_View.m in Sources */,
 				6FA3D8421B03247F0042EABD /* FMResultSet.m in Sources */,
 				6FA3D8451B03247F0042EABD /* NSData+ImageContentType.m in Sources */,
@@ -654,10 +698,10 @@
 				6FA3D8351B03247F0042EABD /* AFHTTPRequestOperation.m in Sources */,
 				6FA3D8431B03247F0042EABD /* Reachability.m in Sources */,
 				6FA3D83D1B03247F0042EABD /* AFURLSessionManager.m in Sources */,
-				6FB0C6931B04B25C00621B1C /* HeaderView.m in Sources */,
 				6FA3D8531B03247F0042EABD /* UIView+WebCacheOperation.m in Sources */,
 				6FA3D8471B03247F0042EABD /* SDWebImageCompat.m in Sources */,
 				6FA3D7A81B0323870042EABD /* main.m in Sources */,
+				6F6670621B09CBCB006E425A /* HealthManager.m in Sources */,
 				6FA3D8441B03247F0042EABD /* MKAnnotationView+WebCache.m in Sources */,
 				6FA3D8331B03247F0042EABD /* RC_RequestManager.m in Sources */,
 				6FA3D8371B03247F0042EABD /* AFHTTPSessionManager.m in Sources */,
@@ -779,6 +823,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = iOSHealthyRanking/iOSHealthyRanking.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -794,6 +841,7 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -802,6 +850,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = iOSHealthyRanking/iOSHealthyRanking.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -817,6 +868,7 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

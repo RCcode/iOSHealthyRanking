@@ -7,7 +7,10 @@
 //
 
 #import "RC_BaseViewController.h"
+#import "UserInfo.h"
 
 @interface UserHomeViewController : RC_BaseViewController
+
+@property (nonatomic,strong) UserInfo *userInfo;
 
 @end

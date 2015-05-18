@@ -64,9 +64,10 @@ static RC_RequestManager *requestManager = nil;
 
 - (void)requestServiceWithPost:(NSString *)url_Str parameters:(id)parameters jsonRequestSerializer:(AFJSONRequestSerializer *)requestSerializer success:(void(^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
+    _operation.requestSerializer = requestSerializer;
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
     _operation.responseSerializer = responseSerializer;
-    
+
     [_operation POST:url_Str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //解析数据
         if (success) {
@@ -113,7 +114,7 @@ static RC_RequestManager *requestManager = nil;
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
-    
+
     [self requestServiceWithPost:PostUserInfoURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
         if (success) {
             success(responseObject);

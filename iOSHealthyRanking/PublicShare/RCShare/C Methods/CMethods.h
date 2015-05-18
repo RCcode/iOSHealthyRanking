@@ -23,4 +23,6 @@ NSString *LocalizedString(NSString *translation_key, id none);
 //获取设备型号
 NSString *doDevicePlatform();
 
+NSString *stringFromDate(NSDate *date);
+
 @end
