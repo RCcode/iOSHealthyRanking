@@ -47,8 +47,8 @@
     [scrollView addSubview:_userHomeView];
     scrollView.contentSize = CGSizeMake(ScreenWidth, 569);
     
-    [_mainImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:nil];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:nil];
+    [_mainImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
     _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
     _headImageView.clipsToBounds = YES;
     [_lblName setText:_userInfo.facebookname];

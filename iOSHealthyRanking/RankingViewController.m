@@ -10,10 +10,14 @@
 #import "UserCell.h"
 #import "HeaderCell.h"
 #import "UserHomeViewController.h"
+#import "HealthManager.h"
 
 @interface RankingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *friends;
+@property (nonatomic, strong) NSMutableArray *serversFriends;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -22,7 +26,6 @@
 -(void)setUserInfo:(UserInfo *)userInfo
 {
     _userInfo = userInfo;
-    [_tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -33,8 +36,228 @@
     _tableView.dataSource = self;
     _tableView.separatorColor = [UIColor clearColor];
     
-    
+    _serversFriends = [[NSMutableArray alloc]init];
+    _dataArray = [[NSMutableArray alloc]init];
+    _friends = [[NSUserDefaults standardUserDefaults]objectForKey:@"friends"];
+    [self getFacebookUserInfo];
+    [self getHealthInfo];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)getHealthInfo
+{
+    __weak RankingViewController *weakSelf = self;
+    if ([HKHealthStore isHealthDataAvailable]) {
+        //        NSSet *writeDataTypes = [self dataTypesToWrite];
+        NSSet *readDataTypes = [[HealthManager shareManager] dataTypesToRead];
+        
+        [[HealthManager shareManager].healthStore requestAuthorizationToShareTypes:nil readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
+            if (!success) {
+                NSLog(@"You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: %@. If you're using a simulator, try it on a device.", error);
+                
+                return;
+            }
+            [[HealthManager shareManager]getAllData:^(double allStepCount, double todayStepCount, double todayDistanceWalkingRunning, double todayFlightsClimbed,double weekMaxStepCount) {
+                weakSelf.userInfo.totalSteps = allStepCount;
+                weakSelf.userInfo.steps = todayStepCount;
+                weakSelf.userInfo.distance = todayDistanceWalkingRunning;
+                weakSelf.userInfo.floors = todayFlightsClimbed;
+                weakSelf.userInfo.maxSteps = weekMaxStepCount;
+                [weakSelf updateUserInfo];
+                if (weakSelf.friends) {
+                    [weakSelf getRanking];
+                }
+            }];
+        }];
+    }
+}
+
+-(void)getFacebookUserInfo
+{
+    __weak RankingViewController *weakSelf = self;
+    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *userInfo) {
+        NSLog(@"%@",userInfo);
+        weakSelf.userInfo.facebookid = [userInfo objectForKey:@"id"];
+        weakSelf.userInfo.facebookname = [userInfo objectForKey:@"name"];
+        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"id"] forKey:@"facebookid"];
+        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"name"] forKey:@"facebookname"];
+        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getCoverGraphPathSuccess:^(NSDictionary *dic) {
+        NSLog(@"%@",dic);
+        weakSelf.userInfo.mainurl = [[dic objectForKey:@"cover"]objectForKey:@"source"];
+        [[NSUserDefaults standardUserDefaults]setObject:[[dic objectForKey:@"cover"]objectForKey:@"source"] forKey:@"mainurl"];
+        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
+        NSLog(@"%@",dic);
+        weakSelf.userInfo.headurl = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
+        [[NSUserDefaults standardUserDefaults]setObject:[[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"] forKey:@"headurl"];
+        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] loadfriendsSuccess:^(NSArray *friends) {
+        NSLog(@"%@",friends);
+        [[NSUserDefaults standardUserDefaults]setObject:friends forKey:@"friends"];
+        weakSelf.friends = friends;
+        [weakSelf getRanking];
+    } andFailed:^(NSError *error) {
+        
+    }];
+}
+
+-(void)updateUserInfo
+{
+    if (!_userInfo.facebookid) {
+        return;
+    }
+    [_tableView reloadData];
+    NSString *date = stringFromDate([NSDate date]);
+    NSString *headURL;
+    NSString *mainURL;
+    if (_userInfo.headurl) {
+        headURL = _userInfo.headurl;
+    }
+    else
+    {
+        headURL = @"";
+    }
+    if (_userInfo.mainurl) {
+        mainURL = _userInfo.mainurl;
+    }
+    else
+    {
+        mainURL = @"";
+    }
+    NSMutableDictionary *userInfoDic = [[NSMutableDictionary alloc]initWithObjects:@[_userInfo.facebookid,date,[NSString stringWithFormat:@"%d",(int)_userInfo.steps],[NSString stringWithFormat:@"%d",(int)_userInfo.floors],[NSString stringWithFormat:@"%d",(int)_userInfo.distance],[NSString stringWithFormat:@"%d",(int)_userInfo.maxSteps],[NSString stringWithFormat:@"%d",(int)_userInfo.totalSteps],_userInfo.facebookname,headURL,mainURL] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+    [[RC_RequestManager shareInstance]postUserDate:userInfoDic success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",date,@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+//    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+    
+//    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:_userInfo.facebookid, nil],@"facebookid",date,@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+    
+//    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+
+}
+
+-(void)getRanking
+{
+    
+    if (_friends) {
+        NSMutableArray *friendsId = [[NSMutableArray alloc]init];
+        for (NSDictionary *friend_ in _friends) {
+//            NSLog(@"I have a friend named %@ with id %@", friend_.name, friend_.id);
+            [friendsId addObject:[friend_ objectForKey:@"id"]];
+        }
+        NSString *date = stringFromDate([NSDate date]);
+        NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:friendsId,@"facebookid",date,@"dateid", nil];
+        __weak RankingViewController *weakSelf = self;
+        [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+            NSLog(@"%@",responseObject);
+            NSDictionary *dic = responseObject;
+            if([[dic objectForKey:@"status"]intValue ] == 0)
+            {
+                NSArray *arr = [dic objectForKey:@"list"];
+                [weakSelf getRankingSuccess:arr];
+            }
+        } andFailed:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
+    
+//    __weak RankingViewController *weakSelf = self;
+//    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//        NSDictionary *dic = responseObject;
+//        if([[dic objectForKey:@"status"]intValue ] == 0)
+//        {
+//            NSArray *arr = [dic objectForKey:@"list"];
+//            [weakSelf getRankingSuccess:arr];
+//        }
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+
+}
+
+-(void)getRankingSuccess:(NSArray *)rangingArr
+{
+    [_serversFriends removeAllObjects];
+    [_dataArray removeAllObjects];
+    BOOL find = NO;
+    for (int i =0; i<rangingArr.count; i++) {
+        NSDictionary *dic = [rangingArr objectAtIndex:i];
+        if (find == NO) {
+            if ([[dic objectForKey:@"steps"]integerValue]<_userInfo.steps) {
+                NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:_userInfo.facebookid,@"facebookid",_userInfo.facebookname,@"facebookname",_userInfo.headurl,@"headurl",_userInfo.mainurl,@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
+                [_serversFriends addObject:user];
+                [_dataArray addObject:user];
+                find = YES;
+            }
+        }
+        [_serversFriends addObject:dic];
+        [_dataArray addObject:dic];
+        if (find == NO && i== (rangingArr.count-1)) {
+            NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:_userInfo.facebookid,@"facebookid",_userInfo.facebookname,@"facebookname",_userInfo.headurl,@"headurl",_userInfo.mainurl,@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
+            [_serversFriends addObject:user];
+            [_dataArray addObject:user];
+        }
+    }
+
+    NSMutableArray *userFriends = [[NSMutableArray alloc]initWithArray:_friends];
+    for (int i=0;i<userFriends.count;i++) {
+        for (int j=0; j<rangingArr.count; j++) {
+            NSString *facebookid = [NSString stringWithFormat:@"%@",[[rangingArr objectAtIndex:j]objectForKey:@"facebookid"]];
+            NSString *strId =  [NSString stringWithFormat:@"%@",[[userFriends objectAtIndex:i]objectForKey:@"id"]];
+            if ([facebookid isEqualToString:strId]) {
+                break;
+            }
+            if (j == rangingArr.count-1) {
+                NSDictionary *dic = [[NSDictionary alloc]initWithObjectsAndKeys:strId,@"facebookid",[[userFriends objectAtIndex:i]objectForKey:@"name"],@"facebookname", nil];
+                [_serversFriends addObject:dic];
+                [_dataArray addObject:dic];
+            }
+        }
+    }
+    
+    if (rangingArr.count == 0) {
+        NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:_userInfo.facebookid,@"facebookid",_userInfo.facebookname,@"facebookname",_userInfo.headurl,@"headurl",_userInfo.mainurl,@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
+        [_serversFriends addObject:user];
+        [_dataArray addObject:user];
+        
+        for (int i=0;i<userFriends.count;i++) {
+            NSString *strId =  [NSString stringWithFormat:@"%@",[[userFriends objectAtIndex:i]objectForKey:@"id"]];
+            NSDictionary *dic = [[NSDictionary alloc]initWithObjectsAndKeys:strId,@"facebookid",[[userFriends objectAtIndex:i]objectForKey:@"name"],@"facebookname", nil];
+            [_serversFriends addObject:dic];
+            [_dataArray addObject:dic];
+        }
+    }
+    [_tableView reloadData];
 }
 
 #pragma mark - UITableView DataSource
@@ -51,8 +274,8 @@
         }
 //        [((HeaderCell *)cell).coverImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
 //        [((HeaderCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
-        [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:nil];
-        [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:nil];
+        [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
+        [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
     }
     else
     {
@@ -62,10 +285,37 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"UserCell" owner:self options:nil]lastObject];
 //            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [((UserCell *)cell).lblUserName setText:[NSString stringWithFormat:@"userName%d",indexPath.row]];
-        [((UserCell *)cell).lblStepCount setText:@"23456"];
+//        [((UserCell *)cell).lblUserName setText:[NSString stringWithFormat:@"userName%d",indexPath.row]];
+//        [((UserCell *)cell).lblStepCount setText:@"23456"];
+//        [((UserCell *)cell).lblRankingId setText:[NSString stringWithFormat:@"%d",indexPath.row]];
+//        [((UserCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
+        
+        NSString *userId = [[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"facebookid"];
+        if ([userId isEqualToString:_userInfo.facebookid]) {
+            ((UserCell *)cell).hidden = NO;
+            [((UserCell *)cell).shareInviteBtn setImage:[UIImage imageNamed:@"Ranking_invite"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            ((UserCell *)cell).hidden = YES;
+        }
+        
+        [((UserCell *)cell).lblUserName setText:[[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"facebookname"]];
+        NSString *steps;
+        if ([[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"steps"]) {
+            steps = [NSString stringWithFormat:@"%@",[[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"steps"]];
+        }
+        else
+        {
+            steps = @"0";
+            ((UserCell *)cell).hidden = NO;
+            [((UserCell *)cell).shareInviteBtn setImage:[UIImage imageNamed:@"Ranking_share"] forState:UIControlStateNormal];
+        }
+        [((UserCell *)cell).lblStepCount setText:steps];
+        float process = [steps floatValue]/10000;
+        [((UserCell *)cell) setProcess:process];
         [((UserCell *)cell).lblRankingId setText:[NSString stringWithFormat:@"%d",indexPath.row]];
-        [((UserCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
+        [((UserCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:[[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"headurl"]]placeholderImage:[UIImage imageNamed:@"people"]];
         if (indexPath.row == 1) {
             [((UserCell *)cell).lblRankingId setFont:[UIFont systemFontOfSize:50]];
             [((UserCell *)cell).lblRankingId setTextColor:colorWithHexString(@"#ffc43c")];
@@ -87,7 +337,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _dataArray.count+1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -102,8 +352,23 @@
     if (indexPath.row == 0) {
         return;
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *dic = [_dataArray objectAtIndex:indexPath.row-1];
+    UserInfo *uInfo = [[UserInfo alloc]init];
+    uInfo.facebookid = [dic objectForKey:@"facebookid"];
+    uInfo.facebookname = [dic objectForKey:@"facebookname"];
+    uInfo.headurl = [dic objectForKey:@"headurl"];
+    uInfo.mainurl = [dic objectForKey:@"mainurl"];
+    uInfo.steps = [[dic objectForKey:@"steps"]intValue];
     UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
-    userHomeViewController.userInfo = _userInfo;
+    if ([uInfo.facebookid isEqualToString:_userInfo.facebookid]) {
+        userHomeViewController.userInfo = _userInfo;
+    }
+    else
+    {
+        userHomeViewController.userInfo = uInfo;
+    }
     [self.navigationController pushViewController:userHomeViewController animated:YES];
 }
 

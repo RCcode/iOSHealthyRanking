@@ -20,27 +20,37 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYW-pX-kIV">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFn-Y2-Q78">
                     <rect key="frame" x="260" y="0.0" width="60" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYW-pX-kIV">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
+                            <state key="normal" image="Ranking_but_setup">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressUserHome:" destination="-1" eventType="touchUpInside" id="kW0-nA-mYa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="OK0-h8-xgE"/>
-                        <constraint firstAttribute="width" constant="60" id="dwv-zl-DXf"/>
+                        <constraint firstItem="uYW-pX-kIV" firstAttribute="top" secondItem="UFn-Y2-Q78" secondAttribute="top" id="1x8-Od-i3d"/>
+                        <constraint firstAttribute="bottom" secondItem="uYW-pX-kIV" secondAttribute="bottom" id="Cs5-VX-qTb"/>
+                        <constraint firstAttribute="height" constant="44" id="LDt-10-Lcg"/>
+                        <constraint firstItem="uYW-pX-kIV" firstAttribute="leading" secondItem="UFn-Y2-Q78" secondAttribute="leading" id="Th2-nu-W7B"/>
+                        <constraint firstAttribute="trailing" secondItem="uYW-pX-kIV" secondAttribute="trailing" id="VPA-7B-HSP"/>
+                        <constraint firstAttribute="width" constant="60" id="wN3-qz-KfM"/>
                     </constraints>
-                    <state key="normal" image="Ranking_but_setup">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="pressUserHome:" destination="-1" eventType="touchUpInside" id="kW0-nA-mYa"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="0.92793037850000004" blue="0.1688420018" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="uYW-pX-kIV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CIo-4k-1zo"/>
+                <constraint firstAttribute="trailing" secondItem="UFn-Y2-Q78" secondAttribute="trailing" id="N3j-Ru-Ui6"/>
                 <constraint firstAttribute="bottom" secondItem="nlT-VL-zAu" secondAttribute="bottom" id="PAU-Rn-Z8q"/>
                 <constraint firstItem="nlT-VL-zAu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ags-Jf-5qu"/>
                 <constraint firstAttribute="trailing" secondItem="nlT-VL-zAu" secondAttribute="trailing" id="jsX-rz-AZ1"/>
-                <constraint firstAttribute="trailing" secondItem="uYW-pX-kIV" secondAttribute="trailing" id="qbF-8C-wdm"/>
+                <constraint firstItem="UFn-Y2-Q78" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lSB-hD-rJt"/>
                 <constraint firstItem="nlT-VL-zAu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="s8m-Sm-HEU"/>
             </constraints>
             <point key="canvasLocation" x="-10" y="433"/>

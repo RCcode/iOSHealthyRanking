@@ -25,6 +25,19 @@
     _userIconImageView.clipsToBounds = YES;
 }
 
+-(void)setProcess:(float)process
+{
+    if (process <0) {
+        process = 0;
+    }
+    if (process>1) {
+        process = 1;
+    }
+    _rankingBar.clipsToBounds = YES;
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_rankingBar attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:CGRectGetWidth(_rankingBar.frame)*process];
+    [self addConstraint:constraint];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

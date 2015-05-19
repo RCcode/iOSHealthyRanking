@@ -14,4 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lblStepCount;
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *rankingBar;
+@property (weak, nonatomic) IBOutlet UIButton *shareInviteBtn;
+
+
+-(void)setProcess:(float)process;
+
 @end
