@@ -73,7 +73,6 @@ static FacebookManager *facebookManager = nil;
                     break;
             }
         }];
-        
     }
     else
     {

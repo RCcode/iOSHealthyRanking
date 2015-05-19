@@ -19,9 +19,11 @@
 -(void)getTodayStepCountCompletionHandler:(void(^)(double todayStepCount))handler;
 -(void)getTodayDistanceWalkingRunningCompletionHandler:(void(^)(double todayDistanceWalkingRunning))handler;
 -(void)getTodayFlightsClimbedCompletionHandler:(void(^)(double todayFlightsClimbed))handler;
+-(void)getWeekMaxStepCountCompletionHandler:(void(^)(double weekMaxStepCount))handler;
+
 - (NSSet *)dataTypesToRead;
 - (NSSet *)dataTypesToWrite;
 
--(void)getAllData:(void(^)(double allStepCount,double todayStepCount,double todayDistanceWalkingRunning,double todayFlightsClimbed))handler;
+-(void)getAllData:(void(^)(double allStepCount,double todayStepCount,double todayDistanceWalkingRunning,double todayFlightsClimbed,double weekMaxStepCount))handler;
 
 @end

@@ -32,7 +32,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorColor = [UIColor clearColor];
-
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -59,7 +60,7 @@
         cell = (UserCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"UserCell" owner:self options:nil]lastObject];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         [((UserCell *)cell).lblUserName setText:[NSString stringWithFormat:@"userName%d",indexPath.row]];
         [((UserCell *)cell).lblStepCount setText:@"23456"];
@@ -122,6 +123,12 @@
         return 300;
     }
     return 80;
+}
+
+- (IBAction)pressUserHome:(id)sender {
+    UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
+    userHomeViewController.userInfo = _userInfo;
+    [self.navigationController pushViewController:userHomeViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

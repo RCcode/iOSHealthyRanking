@@ -25,6 +25,23 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _userInfo = [[UserInfo alloc]init];
+    NSString *facebookid = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookid"];
+    NSString *facebookname = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookname"];
+    NSString *mainurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"mainurl"];
+    NSString *headurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"headurl"];
+    if (facebookid) {
+        _userInfo.facebookid = facebookid;
+    }
+    if (facebookname) {
+        _userInfo.facebookname = facebookname;
+    }
+    if (mainurl) {
+        _userInfo.mainurl = mainurl;
+    }
+    if (headurl) {
+        _userInfo.headurl = headurl;
+    }
+    
     NSString *isLogin = [[NSUserDefaults standardUserDefaults]objectForKey:@"successLogin"];
     
     __weak AppDelegate *weakSelf = self;
@@ -58,39 +75,37 @@
                 
                 return;
             }
-            [[HealthManager shareManager]getAllData:^(double allStepCount, double todayStepCount, double todayDistanceWalkingRunning, double todayFlightsClimbed) {
+            [[HealthManager shareManager]getAllData:^(double allStepCount, double todayStepCount, double todayDistanceWalkingRunning, double todayFlightsClimbed,double weekMaxStepCount) {
                 weakSelf.userInfo.totalSteps = allStepCount;
                 weakSelf.userInfo.steps = todayStepCount;
                 weakSelf.userInfo.distance = todayDistanceWalkingRunning;
                 weakSelf.userInfo.floors = todayFlightsClimbed;
+                weakSelf.userInfo.maxSteps = weekMaxStepCount;
                 [weakSelf updateUserInfo];
             }];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                // Update the user interface based on the current user's health information.
-//            });
         }];
     }
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
-    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-    } andFailed:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
-    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
-    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-    } andFailed:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
-    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:@"1000013", nil],@"facebookid",@"20150515",@"dateid", nil];
-    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-    } andFailed:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+//    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+//    
+//    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+//    
+//    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:@"1000013", nil],@"facebookid",@"20150515",@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
     
     return YES;
 }
@@ -102,6 +117,8 @@
         NSLog(@"%@",userInfo);
         weakSelf.userInfo.facebookid = [userInfo objectForKey:@"id"];
         weakSelf.userInfo.facebookname = [userInfo objectForKey:@"first_name"];
+        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"id"] forKey:@"facebookid"];
+        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"first_name"] forKey:@"facebookname"];
         [weakSelf updateUserInfo];
     } andFailed:^(NSError *error) {
         
@@ -114,6 +131,7 @@
     [[FacebookManager shareManager] getCoverGraphPathSuccess:^(NSDictionary *dic) {
         NSLog(@"%@",dic);
         weakSelf.userInfo.mainurl = [[dic objectForKey:@"cover"]objectForKey:@"source"];
+        [[NSUserDefaults standardUserDefaults]setObject:[[dic objectForKey:@"cover"]objectForKey:@"source"] forKey:@"mainurl"];
         [weakSelf updateUserInfo];
     } andFailed:^(NSError *error) {
         
@@ -121,6 +139,7 @@
     [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
         NSLog(@"%@",dic);
         weakSelf.userInfo.headurl = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
+        [[NSUserDefaults standardUserDefaults]setObject:[[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"] forKey:@"headurl"];
         [weakSelf updateUserInfo];
     } andFailed:^(NSError *error) {
         
@@ -150,8 +169,8 @@
     {
         mainURL = @"";
     }
-    NSMutableDictionary *userInfoDic = [[NSMutableDictionary alloc]initWithObjects:@[_userInfo.facebookid,date,[NSString stringWithFormat:@"%d",(int)_userInfo.steps],[NSString stringWithFormat:@"%d",(int)_userInfo.floors],[NSString stringWithFormat:@"%d",(int)_userInfo.distance],@"5000",[NSString stringWithFormat:@"%d",(int)_userInfo.totalSteps],_userInfo.facebookname,headURL,mainURL] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+    NSMutableDictionary *userInfoDic = [[NSMutableDictionary alloc]initWithObjects:@[_userInfo.facebookid,date,[NSString stringWithFormat:@"%d",(int)_userInfo.steps],[NSString stringWithFormat:@"%d",(int)_userInfo.floors],[NSString stringWithFormat:@"%d",(int)_userInfo.distance],[NSString stringWithFormat:@"%d",(int)_userInfo.maxSteps],[NSString stringWithFormat:@"%d",(int)_userInfo.totalSteps],_userInfo.facebookname,headURL,mainURL] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
     [[RC_RequestManager shareInstance]postUserDate:userInfoDic success:^(id responseObject) {
         NSLog(@"%@",responseObject);
     } andFailed:^(NSError *error) {

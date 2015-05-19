@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F66705D1B098DDC006E425A /* HealthKit.framework */; };
 		6F6670621B09CBCB006E425A /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6670611B09CBCB006E425A /* HealthManager.m */; };
+		6F73242F1B0AD9F800E2E25C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F73242E1B0AD9F800E2E25C /* MBProgressHUD.m */; };
 		6F9209B31B05981D00AD4D8A /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9209B21B05981D00AD4D8A /* FacebookManager.m */; };
 		6F9209C41B06030200AD4D8A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9209C31B06030200AD4D8A /* UserInfo.m */; };
 		6F9857961B048318007A151C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9857941B048318007A151C /* LoginViewController.m */; };
@@ -84,6 +85,8 @@
 		6F66705D1B098DDC006E425A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		6F6670601B09CBCB006E425A /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
 		6F6670611B09CBCB006E425A /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
+		6F73242D1B0AD9F800E2E25C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6F73242E1B0AD9F800E2E25C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6F9209B11B05981D00AD4D8A /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		6F9209B21B05981D00AD4D8A /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		6F9209B51B06000300AD4D8A /* iOSHealthyRanking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iOSHealthyRanking.entitlements; sourceTree = "<group>"; };
@@ -246,6 +249,15 @@
 			path = HealthManager;
 			sourceTree = "<group>";
 		};
+		6F73242C1B0AD9F800E2E25C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6F73242D1B0AD9F800E2E25C /* MBProgressHUD.h */,
+				6F73242E1B0AD9F800E2E25C /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		6F9209B01B0597FA00AD4D8A /* FacebookManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +412,7 @@
 		6FA3D7D91B03247F0042EABD /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				6F73242C1B0AD9F800E2E25C /* MBProgressHUD */,
 				6FA3D7DA1B03247F0042EABD /* AdMobSDK */,
 				6FA3D7E81B03247F0042EABD /* AFNetworking */,
 				6FA3D7FC1B03247F0042EABD /* FMDB */,
@@ -674,6 +687,7 @@
 				6FA3D8401B03247F0042EABD /* FMDatabasePool.m in Sources */,
 				6FA3D8311B03247F0042EABD /* RC_LocalDataManager.m in Sources */,
 				6FA3D84D1B03247F0042EABD /* UIButton+WebCache.m in Sources */,
+				6F73242F1B0AD9F800E2E25C /* MBProgressHUD.m in Sources */,
 				6FA3D8411B03247F0042EABD /* FMDatabaseQueue.m in Sources */,
 				6FA3D84F1B03247F0042EABD /* UIImage+MultiFormat.m in Sources */,
 				6FA3D83E1B03247F0042EABD /* FMDatabase.m in Sources */,

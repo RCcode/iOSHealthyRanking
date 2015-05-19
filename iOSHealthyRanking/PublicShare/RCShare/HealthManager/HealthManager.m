@@ -27,13 +27,15 @@ static HealthManager *healthManager = nil;
     return healthManager;
 }
 
--(void)getAllData:(void(^)(double allStepCount,double todayStepCount,double todayDistanceWalkingRunning,double todayFlightsClimbed))handler
+-(void)getAllData:(void(^)(double allStepCount,double todayStepCount,double todayDistanceWalkingRunning,double todayFlightsClimbed,double weekMaxStepCount))handler
 {
     [self getAllStepCount2CompletionHandler:^(double allStepCount) {
         [self getTodayDistanceWalkingRunningCompletionHandler:^(double todayDistanceWalkingRunning) {
             [self getTodayFlightsClimbedCompletionHandler:^(double todayFlightsClimbed) {
                 [self getTodayStepCountCompletionHandler:^(double todayStepCount) {
-                    handler(allStepCount,todayStepCount,todayDistanceWalkingRunning,todayFlightsClimbed);
+                    [self getWeekMaxStepCountCompletionHandler:^(double weekMaxStepCount) {
+                        handler(allStepCount,todayStepCount,todayDistanceWalkingRunning,todayFlightsClimbed,weekMaxStepCount);
+                    }];
                 }];
             }];
         }];
@@ -144,6 +146,83 @@ static HealthManager *healthManager = nil;
                  //                 [self plotData:value forDate:date];
              }
              
+         }];
+    };
+    
+    [self.healthStore executeQuery:query];
+}
+
+-(void)getWeekMaxStepCountCompletionHandler:(void(^)(double weekMaxStepCount))handler
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *interval = [[NSDateComponents alloc] init];
+    interval.day = 1;
+    
+    NSDateComponents *anchorComponents =
+    [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth |
+     NSCalendarUnitYear | NSCalendarUnitWeekday fromDate:[NSDate date]];
+    
+    //    NSInteger offset = (7 + anchorComponents.weekday - 2) % 7;
+    //    anchorComponents.day -= offset;
+    //    anchorComponents.hour = 3;
+    
+    NSDate *anchorDate = [calendar dateFromComponents:anchorComponents];
+    
+    HKQuantityType *quantityType =
+    [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    
+    // Create the query
+    HKStatisticsCollectionQuery *query =
+    [[HKStatisticsCollectionQuery alloc]
+     initWithQuantityType:quantityType
+     quantitySamplePredicate:nil
+     options:HKStatisticsOptionCumulativeSum
+     anchorDate:anchorDate
+     intervalComponents:interval];
+    
+    __block double maxStepCount = 0;
+    
+    // Set the results handler
+    query.initialResultsHandler =
+    ^(HKStatisticsCollectionQuery *query, HKStatisticsCollection *results, NSError *error) {
+        
+        if (error) {
+            // Perform proper error handling here
+            NSLog(@"*** An error occurred while calculating the statistics: %@ ***",
+                  error.localizedDescription);
+            abort();
+        }
+        
+        NSDate *endDate = [NSDate date];
+        NSDate *startDate = [calendar
+                             dateByAddingUnit:NSCalendarUnitWeekday
+                             value:-1
+                             toDate:endDate
+                             options:0];
+//        NSDate *startDate = [self getToday];
+//        startDate = anchorDate;
+        // Plot the weekly step counts over the past 3 months
+        [results
+         enumerateStatisticsFromDate:startDate
+         toDate:endDate
+         withBlock:^(HKStatistics *result, BOOL *stop) {
+             
+             HKQuantity *quantity = result.sumQuantity;
+             if (quantity) {
+                 double value = [quantity doubleValueForUnit:[HKUnit countUnit]];
+                 NSLog(@"%f,%@,%@",value,result.startDate,result.endDate);
+                 if (maxStepCount<value) {
+                     maxStepCount = value;
+                 }
+                 if ([result.startDate isEqualToDate:anchorDate]) {
+                     handler(maxStepCount);
+                 }
+                 
+             }
+             else
+             {
+                 handler(0);
+             }
          }];
     };
     

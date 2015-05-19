@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDescriptionMaxSteps;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
+@property (weak, nonatomic) IBOutlet UIView *lineH1;
+@property (weak, nonatomic) IBOutlet UIView *lineH2;
+@property (weak, nonatomic) IBOutlet UIView *lineH3;
+@property (weak, nonatomic) IBOutlet UIView *lineV1;
+
 @end
 
 @implementation UserHomeViewController
@@ -37,26 +42,39 @@
     self.navigationController.navigationBarHidden = YES;
     
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    scrollView.backgroundColor = [UIColor redColor];
+    scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:scrollView];
     [scrollView addSubview:_userHomeView];
-    scrollView.contentSize = CGSizeMake(ScreenWidth, 567);
+    scrollView.contentSize = CGSizeMake(ScreenWidth, 569);
     
     [_mainImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:nil];
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:nil];
+    _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
+    _headImageView.clipsToBounds = YES;
     [_lblName setText:_userInfo.facebookname];
+    [_lblName setTextColor:colorWithHexString(@"#367920")];
+    [_lblName setFont:[UIFont boldSystemFontOfSize:18]];
     [_lblStepCount setText:[NSString stringWithFormat:@"%d",(int)_userInfo.steps]];
     [_lblStepCount setTextColor:colorWithHexString(@"#ff912c")];
+    [_lblStepCount setFont:[UIFont boldSystemFontOfSize:30]];
     [_lblTotalSteps setText:[NSString stringWithFormat:@"%d",(int)_userInfo.totalSteps]];
     [_lblTotalSteps setTextColor:colorWithHexString(@"#3ddcc4")];
+    [_lblTotalSteps setFont:[UIFont boldSystemFontOfSize:25]];
     [_lblMaxSteps setText:[NSString stringWithFormat:@"%d",(int)_userInfo.maxSteps]];
     [_lblMaxSteps setTextColor:colorWithHexString(@"#3ddcc4")];
+    [_lblMaxSteps setFont:[UIFont boldSystemFontOfSize:25]];
     [_lblDescriptionTotalSteps setText:@"The cumulative number of steps"];
     [_lblDescriptionTotalSteps setTextColor:colorWithHexString(@"#acadab")];
+    [_lblDescriptionTotalSteps setFont:[UIFont boldSystemFontOfSize:15]];
+    [_lblDescriptionTotalSteps setNumberOfLines:0];
     [_lblDescriptionMaxSteps setText:@"On record"];
     [_lblDescriptionMaxSteps setTextColor:colorWithHexString(@"#acadab")];
+    [_lblDescriptionMaxSteps setFont:[UIFont boldSystemFontOfSize:15]];
     [_shareButton setBackgroundColor:colorWithHexString(@"#3ddcc4")];
-    
+    [_lineH1 setBackgroundColor:colorWithHexString(@"#ebebeb")];
+    [_lineH2 setBackgroundColor:colorWithHexString(@"#ebebeb")];
+    [_lineH3 setBackgroundColor:colorWithHexString(@"#ebebeb")];
+    [_lineV1 setBackgroundColor:colorWithHexString(@"#ebebeb")];
     // Do any additional setup after loading the view from its nib.
 }
 
