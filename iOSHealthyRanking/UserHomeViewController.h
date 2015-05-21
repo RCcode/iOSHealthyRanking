@@ -12,5 +12,6 @@
 @interface UserHomeViewController : RC_BaseViewController
 
 @property (nonatomic,strong) UserInfo *userInfo;
+@property (nonatomic) BOOL canShare;
 
 @end

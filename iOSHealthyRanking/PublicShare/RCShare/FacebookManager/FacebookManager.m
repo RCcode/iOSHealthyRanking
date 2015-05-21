@@ -46,19 +46,9 @@ static FacebookManager *facebookManager = nil;
     if (!FBSession.activeSession.isOpen) {
         // if the session is closed, then we open it here
         
-        //        NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions", nil];
-        //        [FBSession openActiveSessionWithPublishPermissions:permissions
-        //                                                  defaultAudience:FBSessionDefaultAudienceFriends
-        //                                                     allowLoginUI:YES
-        //                                                completionHandler:^(FBSession *session,
-        //                                                                    FBSessionState state,
-        //                                                                    NSError *error) {
-        //
-        //                                                }];
-        [FBSession.activeSession openWithCompletionHandler:^(
-                                                             FBSession *session,
-                                                             FBSessionState state,
-                                                             NSError *error) {
+        NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions", nil];
+        [FBSession openActiveSessionWithPublishPermissions:permissions
+        defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:YES completionHandler:^(FBSession *session,FBSessionState state,NSError *error) {
             NSLog(@"aaaaa");
             
             switch (state) {
@@ -73,6 +63,26 @@ static FacebookManager *facebookManager = nil;
                     break;
             }
         }];
+        
+        
+//        [FBSession.activeSession openWithCompletionHandler:^(
+//                                                             FBSession *session,
+//                                                             FBSessionState state,
+//                                                             NSError *error) {
+//            NSLog(@"aaaaa");
+//            
+//            switch (state) {
+//                case FBSessionStateClosedLoginFailed:
+//                    //TODO handle here.
+//                    _isLogined = NO;
+//                    failure(error);
+//                    break;
+//                default:
+//                    _isLogined = YES;
+//                    success();
+//                    break;
+//            }
+//        }];
     }
     else
     {
@@ -146,6 +156,130 @@ static FacebookManager *facebookManager = nil;
                                   failure(error);
                               }
                           }];
+}
+
+//void _share(const char * name,const char * caption, const char * desc, const char * link, const char * picture)
+//{
+//    NSMutableDictionary * postParams =
+//    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+//     [NSString stringWithUTF8String:link], @"link",
+//     [NSString stringWithUTF8String:picture], @"picture",
+//     [NSString stringWithUTF8String:name], @"name",
+//     [NSString stringWithUTF8String:caption], @"caption",
+//     [NSString stringWithUTF8String:desc], @"description",
+//     nil];
+//    [FBRequestConnection
+//     startWithGraphPath:@"me/feed"
+//     parameters:postParams
+//     HTTPMethod:@"POST"
+//     completionHandler:^(FBRequestConnection *connection,
+//                         id result,
+//                         NSError *error) {
+//         NSString *alertText;
+//         if (error) {
+//             alertText = [NSString stringWithFormat:
+//                          @"error: domain = %@, code = %d",
+//                          error.domain, error.code];
+//         } else {
+//             alertText = [NSString stringWithFormat:
+//                          @"Posted action, id: %@",
+//                          [result objectForKey:@"id"]];
+//         }
+//         // Show the result in an alert
+//         [[[UIAlertView alloc] initWithTitle:@"Result"
+//                                     message:alertText
+//                                    delegate:nil
+//                           cancelButtonTitle:@"OK!"
+//                           otherButtonTitles:nil]
+//          show];
+//     }];
+//}
+//void FacebookProxyShare(const char * name,const char * caption, const char * desc, const char * link, const char * picture)
+//{
+//    if ([FBSession.activeSession.permissions
+//         indexOfObject:@"publish_actions"] == NSNotFound) {
+//        //No permissions found in session, ask for it
+//        [FBSession.activeSession
+//         reauthorizeWithPublishPermissions:
+//         [NSArray arrayWithObject:@"publish_actions"]
+//         defaultAudience:FBSessionDefaultAudienceFriends
+//         completionHandler:^(FBSession *session, NSError *error) {
+//             if (!error) {
+//                 // If permissions granted, publish the story
+//                 _share(name, caption, desc, link, picture);
+//             }
+//         }];
+//    } else {
+//        // If permissions present, publish the story
+//        _share(name, caption, desc, link, picture);
+//    }
+//}
+
+-(void)shareWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link picture:(NSString *)picture
+{
+    NSMutableDictionary * postParams =
+    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+     link, @"link",
+     picture, @"picture",
+     name, @"name",
+     caption, @"caption",
+     desc, @"description",
+     nil];
+    [FBRequestConnection
+     startWithGraphPath:@"me/feed"
+     parameters:postParams
+     HTTPMethod:@"POST"
+     completionHandler:^(FBRequestConnection *connection,
+                         id result,
+                         NSError *error) {
+         if (error) {
+             showLabelHUD(@"failed");
+         }
+         else
+         {
+             showLabelHUD(@"success");
+         }
+//         NSString *alertText;
+//         if (error) {
+//             alertText = [NSString stringWithFormat:
+//                          @"error: domain = %@, code = %d",
+//                          error.domain, error.code];
+//         } else {
+//             alertText = [NSString stringWithFormat:
+//                          @"Posted action, id: %@",
+//                          [result objectForKey:@"id"]];
+//         }
+//         // Show the result in an alert
+//         [[[UIAlertView alloc] initWithTitle:@"Result"
+//                                     message:alertText
+//                                    delegate:nil
+//                           cancelButtonTitle:@"OK!"
+//                           otherButtonTitles:nil]
+//          show];
+     }];
+
+}
+
+-(void)shareToFacebookWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link picture:(NSString *)picture
+{
+    if ([FBSession.activeSession.permissions
+         indexOfObject:@"publish_actions"] == NSNotFound) {
+        //No permissions found in session, ask for it
+        [FBSession.activeSession
+         reauthorizeWithPublishPermissions:
+         [NSArray arrayWithObject:@"publish_actions"]
+         defaultAudience:FBSessionDefaultAudienceFriends
+         completionHandler:^(FBSession *session, NSError *error) {
+             if (!error) {
+                 // If permissions granted, publish the story
+                 [self shareWithName:name caption:caption desc:desc link:link picture:picture];
+             }
+         }];
+    } else {
+        // If permissions present, publish the story
+        [self shareWithName:name caption:caption desc:desc link:link picture:picture];
+    }
+
 }
 
 @end

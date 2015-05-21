@@ -25,4 +25,6 @@ NSString *doDevicePlatform();
 
 NSString *stringFromDate(NSDate *date);
 
+void showLabelHUD(NSString *content);
+
 @end

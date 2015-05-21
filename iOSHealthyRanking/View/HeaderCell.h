@@ -11,4 +11,6 @@
 @interface HeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *winnerImageView;
+
 @end

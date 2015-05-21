@@ -19,5 +19,8 @@
 -(void)loadfriendsSuccess:(void(^)(NSArray* friends))success andFailed:(void (^)(NSError *error))failure;
 -(void)getCoverGraphPathSuccess:(void(^)(NSDictionary *dic))success andFailed:(void (^)(NSError *error))failure;
 -(void)getHeadPicturePathSuccess:(void(^)(NSDictionary *dic))success andFailed:(void (^)(NSError *error))failure;
+-(void)shareToFacebookWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link picture:(NSString *)picture;
+
+//void FacebookProxyShare(const char * name,const char * caption, const char * desc, const char * link, const char * picture);
 
 @end

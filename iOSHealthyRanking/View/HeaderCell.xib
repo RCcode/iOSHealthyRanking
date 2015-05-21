@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
@@ -20,6 +19,13 @@
                             <constraint firstAttribute="height" constant="256" id="O6Q-Lw-jV4"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ranking_crown" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-KB-wkL">
+                        <rect key="frame" x="135" y="187" width="50" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="SqS-GU-fG5"/>
+                            <constraint firstAttribute="height" constant="38" id="fXa-9f-94k"/>
+                        </constraints>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H8W-CZ-Cbc">
                         <rect key="frame" x="125" y="220" width="70" height="70"/>
                         <constraints>
@@ -30,8 +36,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="H8W-CZ-Cbc" secondAttribute="centerX" id="0f0-aN-FeZ"/>
+                    <constraint firstItem="I1l-KB-wkL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="187" id="3Hs-Ih-jaO"/>
                     <constraint firstItem="H8W-CZ-Cbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="220" id="a8x-Jn-EKJ"/>
                     <constraint firstAttribute="trailing" secondItem="egI-qc-Zvd" secondAttribute="trailing" id="dIU-sl-6wL"/>
+                    <constraint firstAttribute="centerX" secondItem="I1l-KB-wkL" secondAttribute="centerX" id="glc-db-R6y"/>
                     <constraint firstItem="egI-qc-Zvd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="s3g-Wf-gf2"/>
                     <constraint firstItem="egI-qc-Zvd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yqT-QI-O33"/>
                 </constraints>
@@ -39,10 +47,14 @@
             <connections>
                 <outlet property="coverImageView" destination="egI-qc-Zvd" id="dV8-fZ-YoD"/>
                 <outlet property="userIconImageView" destination="H8W-CZ-Cbc" id="blb-TP-Ide"/>
+                <outlet property="winnerImageView" destination="I1l-KB-wkL" id="91N-tM-yD3"/>
             </connections>
             <point key="canvasLocation" x="338" y="231"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Ranking_crown" width="50" height="37"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

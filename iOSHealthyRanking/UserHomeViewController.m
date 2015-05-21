@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *lineH3;
 @property (weak, nonatomic) IBOutlet UIView *lineV1;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnToday;
+
 @end
 
 @implementation UserHomeViewController
@@ -64,18 +66,36 @@
     [_lblMaxSteps setTextColor:colorWithHexString(@"#3ddcc4")];
     [_lblMaxSteps setFont:[UIFont boldSystemFontOfSize:25]];
     [_lblDescriptionTotalSteps setText:@"The cumulative number of steps"];
-    [_lblDescriptionTotalSteps setTextColor:colorWithHexString(@"#acadab")];
-    [_lblDescriptionTotalSteps setFont:[UIFont boldSystemFontOfSize:15]];
+    [_lblDescriptionTotalSteps setTextColor:colorWithHexString(@"#626460")];
+    [_lblDescriptionTotalSteps setFont:[UIFont boldSystemFontOfSize:14]];
     [_lblDescriptionTotalSteps setNumberOfLines:0];
     [_lblDescriptionMaxSteps setText:@"On record"];
-    [_lblDescriptionMaxSteps setTextColor:colorWithHexString(@"#acadab")];
-    [_lblDescriptionMaxSteps setFont:[UIFont boldSystemFontOfSize:15]];
+    [_lblDescriptionMaxSteps setTextColor:colorWithHexString(@"#626460")];
+    [_lblDescriptionMaxSteps setFont:[UIFont boldSystemFontOfSize:14]];
+    
+    
     [_shareButton setBackgroundColor:colorWithHexString(@"#3ddcc4")];
+    [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+    if (_canShare) {
+        _shareButton.hidden = NO;
+    }
+    else
+    {
+        _shareButton.hidden = YES;
+    }
     [_lineH1 setBackgroundColor:colorWithHexString(@"#ebebeb")];
     [_lineH2 setBackgroundColor:colorWithHexString(@"#ebebeb")];
     [_lineH3 setBackgroundColor:colorWithHexString(@"#ebebeb")];
     [_lineV1 setBackgroundColor:colorWithHexString(@"#ebebeb")];
+    [_btnToday setTitleColor:colorWithHexString(@"626460") forState:UIControlStateNormal];
+    _btnToday.titleLabel.font = [UIFont systemFontOfSize:13];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)share
+{
+    NSString *desc = [NSString stringWithFormat:@"我今天跑了%d步,如果想和我一起比赛的话，下载地址",(int)_userInfo.steps];
+    [[FacebookManager shareManager]shareToFacebookWithName:@"快来和我比拼" caption:@"Sports for Facebook" desc:desc link:@"http://bit.ly/1uYvgiC" picture:@""];
 }
 
 - (IBAction)back:(id)sender {

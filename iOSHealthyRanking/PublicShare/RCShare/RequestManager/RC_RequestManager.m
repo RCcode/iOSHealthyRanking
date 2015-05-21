@@ -10,9 +10,13 @@
 #import "AFNetworking.h"
 #import "Reachability.h"
 
-#define PostUserInfoURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/updateHealthyData.do"
+//#define PostUserInfoURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/updateHealthyData.do"
+//
+//#define GetRankingURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/getHealthyData.do"
 
-#define GetRankingURL @"http://192.168.0.88:8081/AdlayoutBossWeb/user/getHealthyData.do"
+#define PostUserInfoURL @"http://healthy.rcplatformhk.net/HealthyRankingWeb/healthy/updateHealthyData.do"
+
+#define GetRankingURL @"http://healthy.rcplatformhk.net/HealthyRankingWeb/healthy/getHealthyData.do"
 
 @interface RC_RequestManager()
 

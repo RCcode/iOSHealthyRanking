@@ -11,7 +11,7 @@
 //#import <time.h>
 #import "sys/sysctl.h"
 //#include <mach/mach.h>
-
+#import "MBProgressHUD.h"
 //用户当前的语言环境
 #define CURR_LANG   ([[NSLocale preferredLanguages] objectAtIndex:0])
 
@@ -145,5 +145,26 @@ NSString *stringFromDate(NSDate *date)
     return destDateString;
     
 }
+
+MBProgressHUD *HUD;
+void showLabelHUD(NSString *content)
+{
+    //显示LoadView
+    if (HUD==nil) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        HUD = [[MBProgressHUD alloc] initWithView:window];
+        HUD.mode = MBProgressHUDModeText;
+        [window addSubview:HUD];
+        //如果设置此属性则当前的view置于后台
+    }
+    HUD.labelText = content;
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        sleep(1.5);
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+    }];
+}
+
 
 @end

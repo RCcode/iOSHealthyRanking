@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib {
     [_lineView setBackgroundColor:colorWithHexString(@"#ececec")];
-    [_lblUserName setFont:[UIFont systemFontOfSize:18]];
+    [_lblUserName setFont:[UIFont systemFontOfSize:15]];
     [_lblUserName setTextColor:colorWithHexString(@"#626460")];
     [_lblStepCount setFont:[UIFont systemFontOfSize:15]];
     [_lblStepCount setTextColor:colorWithHexString(@"#b9b8b6")];

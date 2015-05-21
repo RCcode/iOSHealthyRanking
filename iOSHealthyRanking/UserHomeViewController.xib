@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserHomeViewController">
             <connections>
+                <outlet property="btnToday" destination="muZ-aS-PCg" id="gKp-dZ-k3O"/>
                 <outlet property="headImageView" destination="5Jc-86-79t" id="5L1-jn-bJY"/>
                 <outlet property="lblDescriptionMaxSteps" destination="QRy-SO-U2S" id="1jL-p3-9uI"/>
                 <outlet property="lblDescriptionTotalSteps" destination="ckc-M7-n2b" id="ttf-xi-QoI"/>
@@ -100,13 +100,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d18-Fk-oHf">
                     <rect key="frame" x="0.0" y="332" width="320" height="82"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muZ-aS-PCg">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muZ-aS-PCg">
                             <rect key="frame" x="135" y="0.0" width="50" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Q5U-TN-GpL"/>
                                 <constraint firstAttribute="width" constant="50" id="zwl-sv-qmf"/>
                             </constraints>
-                            <state key="normal" title="Button">
+                            <state key="normal" title="TODAY">
+                                <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
