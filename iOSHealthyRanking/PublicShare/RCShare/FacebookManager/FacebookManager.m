@@ -46,7 +46,7 @@ static FacebookManager *facebookManager = nil;
     if (!FBSession.activeSession.isOpen) {
         // if the session is closed, then we open it here
         
-        NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions", nil];
+        NSArray *permissions = [NSArray arrayWithObjects:@"publish_actions",@"user_friends", nil];
         [FBSession openActiveSessionWithPublishPermissions:permissions
         defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:YES completionHandler:^(FBSession *session,FBSessionState state,NSError *error) {
             NSLog(@"aaaaa");

@@ -320,11 +320,11 @@
         {
             steps = @"0";
             ((UserCell *)cell).hidden = NO;
-            if(![userId isEqualToString:_userInfo.facebookid])
-            {
-                [((UserCell *)cell).shareInviteBtn setImage:[UIImage imageNamed:@"Ranking_invite"] forState:UIControlStateNormal];
-                [((UserCell *)cell).shareInviteBtn addTarget:self action:@selector(inviteFriend) forControlEvents:UIControlEventTouchUpInside];
-            }
+//            if(![userId isEqualToString:_userInfo.facebookid])
+//            {
+//                [((UserCell *)cell).shareInviteBtn setImage:[UIImage imageNamed:@"Ranking_invite"] forState:UIControlStateNormal];
+//                [((UserCell *)cell).shareInviteBtn addTarget:self action:@selector(inviteFriend) forControlEvents:UIControlEventTouchUpInside];
+//            }
         }
         ((UserCell *)cell).shareInviteBtn.tag = indexPath.row;
         [((UserCell *)cell).lblStepCount setText:steps];
