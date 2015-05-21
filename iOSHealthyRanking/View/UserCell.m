@@ -9,7 +9,10 @@
 #import "UserCell.h"
 
 @interface UserCell ()
-
+{
+    NSLayoutConstraint *constraint;
+}
+@property (weak, nonatomic) IBOutlet UIImageView *rankingBarBg;
 
 @end
 
@@ -34,7 +37,11 @@
         process = 1;
     }
     _rankingBar.clipsToBounds = YES;
-    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_rankingBar attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:CGRectGetWidth(_rankingBar.frame)*process];
+    if (constraint) {
+        [self removeConstraint:constraint];
+        constraint = nil;
+    }
+    constraint = [NSLayoutConstraint constraintWithItem:_rankingBar attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:CGRectGetWidth(_rankingBarBg.frame)*process];
     [self addConstraint:constraint];
 }
 
