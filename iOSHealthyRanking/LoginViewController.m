@@ -84,6 +84,7 @@
     
     RankingViewController *rankingViewController = [[RankingViewController alloc]init];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:rankingViewController];
+    rankingViewController.userInfo = [[UserInfo alloc]init];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
