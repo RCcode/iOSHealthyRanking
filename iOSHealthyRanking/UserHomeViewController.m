@@ -65,11 +65,11 @@
     [_lblMaxSteps setText:[NSString stringWithFormat:@"%d",(int)_userInfo.maxSteps]];
     [_lblMaxSteps setTextColor:colorWithHexString(@"#3ddcc4")];
     [_lblMaxSteps setFont:[UIFont boldSystemFontOfSize:25]];
-    [_lblDescriptionTotalSteps setText:@"The cumulative number of steps"];
+    [_lblDescriptionTotalSteps setText:@"Step count"];
     [_lblDescriptionTotalSteps setTextColor:colorWithHexString(@"#626460")];
     [_lblDescriptionTotalSteps setFont:[UIFont boldSystemFontOfSize:14]];
     [_lblDescriptionTotalSteps setNumberOfLines:0];
-    [_lblDescriptionMaxSteps setText:@"On record"];
+    [_lblDescriptionMaxSteps setText:@"The highest in a week"];
     [_lblDescriptionMaxSteps setTextColor:colorWithHexString(@"#626460")];
     [_lblDescriptionMaxSteps setFont:[UIFont boldSystemFontOfSize:14]];
     

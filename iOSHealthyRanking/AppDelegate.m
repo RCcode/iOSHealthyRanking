@@ -23,6 +23,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //注册通知
+    [self registNotification];
+    [self addPush];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _userInfo = [[UserInfo alloc]init];
     NSString *facebookid = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookid"];
@@ -88,6 +92,88 @@
 //    }];
     
     return YES;
+}
+
+-(void)addPush
+{
+    UILocalNotification *notification=[[UILocalNotification alloc] init];
+    
+    notification.repeatInterval = kCFCalendarUnitDay;
+    
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    
+    notification.applicationIconBadgeNumber = 1;
+    
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd-HH-mm-ss"];
+    
+    NSString  * nsStringDate12 =  [NSString  stringWithFormat:@"%d-%d-%d-%d-%d-%d",
+                                   
+                                   2015, 05, 19, 21, 30, 01  ];
+    
+    NSDate  * todayTwelve=[dateformatter dateFromString: nsStringDate12];
+    
+    notification.fireDate = todayTwelve;
+    
+    notification.alertBody=@"今天还没用APP呢";
+    
+    notification.alertAction = @"打开";
+    
+    // 通知提示音 使用默认的
+    
+    notification.soundName= UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication]   scheduleLocalNotification:notification];
+}
+
+
+#pragma mark -
+#pragma mark 注册通知
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    
+//    NSRange range = NSMakeRange(1,[[deviceToken description] length]-2);
+//    NSString *deviceTokenStr = [[deviceToken description] substringWithRange:range];
+//    CLog(@"deviceTokenStr==%@",deviceTokenStr);
+//    
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:UDKEY_DEVICETOKEN];
+//    if (token == nil || [token isKindOfClass:[NSNull class]] || ![token isEqualToString:deviceTokenStr]) {
+//        
+//        [[NSUserDefaults standardUserDefaults] setObject:deviceTokenStr forKey:UDKEY_DEVICETOKEN];
+//        //注册token
+//        [self postData:[NSString stringWithFormat:@"%@",deviceTokenStr]];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
+    
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    CLog(@"Fail to Register For Remote Notificaions With Error :error = %@",error.description);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+    CLog(@"userInfo = %@",userInfo);
+    
+}
+
+- (void)registNotification{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+}
+
+- (void)cancelNotification{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
+- (void)OpenUrl:(NSString *)urlString{
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

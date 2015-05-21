@@ -225,6 +225,16 @@ static FacebookManager *facebookManager = nil;
      caption, @"caption",
      desc, @"description",
      nil];
+//    NSString *path = [[NSBundle mainBundle]pathForResource:@"74B10FBCB7E8" ofType:@"jpg"];
+//    NSMutableDictionary * postParams =
+//    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+//     link, @"link",
+//     path, @"picture",
+//     name, @"name",
+//     caption, @"caption",
+//     desc, @"description",
+//     nil];
+
     [FBRequestConnection
      startWithGraphPath:@"me/feed"
      parameters:postParams
@@ -233,6 +243,7 @@ static FacebookManager *facebookManager = nil;
                          id result,
                          NSError *error) {
          if (error) {
+             NSLog(@"%@,%@",error,error.description);
              showLabelHUD(@"failed");
          }
          else
