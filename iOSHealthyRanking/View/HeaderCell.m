@@ -18,6 +18,7 @@
 - (void)awakeFromNib {
     _userIconImageView.layer.cornerRadius = CGRectGetHeight(_userIconImageView.frame)/2;
     _userIconImageView.clipsToBounds = YES;
+    _coverImageView.clipsToBounds = YES;
     // Initialization code
 }
 

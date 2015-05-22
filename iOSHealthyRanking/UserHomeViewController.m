@@ -54,7 +54,7 @@
     _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
     _headImageView.clipsToBounds = YES;
     [_lblName setText:_userInfo.facebookname];
-    [_lblName setTextColor:colorWithHexString(@"#367920")];
+    [_lblName setTextColor:colorWithHexString(@"#626460")];
     [_lblName setFont:[UIFont boldSystemFontOfSize:18]];
     [_lblStepCount setText:[NSString stringWithFormat:@"%d",(int)_userInfo.steps]];
     [_lblStepCount setTextColor:colorWithHexString(@"#ff912c")];
