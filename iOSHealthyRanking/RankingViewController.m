@@ -280,10 +280,12 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"HeaderCell" owner:self options:nil]lastObject];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
-        [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
-        if (_dataArray.count >=1) {
-            
+//        [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
+//        [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
+        [((HeaderCell *)cell).coverImageView setImage:[UIImage imageNamed:@"pic_top"]];
+        [((HeaderCell *)cell).userIconImageView setImage:[UIImage imageNamed:@"people"]];
+        if (_dataArray.count >=1)
+        {
             NSString *userId = [[_dataArray objectAtIndex:0] objectForKey:@"facebookid"];
             
             if ([userId isEqualToString:_userInfo.facebookid]) {
