@@ -387,6 +387,8 @@
     uInfo.headurl = [dic objectForKey:@"headurl"];
     uInfo.mainurl = [dic objectForKey:@"mainurl"];
     uInfo.steps = [[dic objectForKey:@"steps"]intValue];
+    uInfo.maxSteps = [[dic objectForKey:@"maxSteps"]intValue];
+    uInfo.totalSteps = [[dic objectForKey:@"totalSteps"]intValue];
     UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
     if ([uInfo.facebookid isEqualToString:_userInfo.facebookid]) {
         userHomeViewController.userInfo = _userInfo;

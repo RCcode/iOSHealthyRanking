@@ -67,12 +67,12 @@
     [_lblMaxSteps setFont:[UIFont boldSystemFontOfSize:25]];
     [_lblDescriptionTotalSteps setText:@"Step count"];
     [_lblDescriptionTotalSteps setTextColor:colorWithHexString(@"#626460")];
-    [_lblDescriptionTotalSteps setFont:[UIFont boldSystemFontOfSize:14]];
+    [_lblDescriptionTotalSteps setFont:[UIFont systemFontOfSize:14]];
     [_lblDescriptionTotalSteps setNumberOfLines:0];
     [_lblDescriptionMaxSteps setText:@"The highest in a week"];
     _lblDescriptionMaxSteps.numberOfLines = 2;
     [_lblDescriptionMaxSteps setTextColor:colorWithHexString(@"#626460")];
-    [_lblDescriptionMaxSteps setFont:[UIFont boldSystemFontOfSize:14]];
+    [_lblDescriptionMaxSteps setFont:[UIFont systemFontOfSize:14]];
     
     
     [_shareButton setBackgroundColor:colorWithHexString(@"#3ddcc4")];
