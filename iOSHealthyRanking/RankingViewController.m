@@ -150,12 +150,12 @@
 //        NSLog(@"%@",error);
 //    }];
     
-//    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:_userInfo.facebookid, nil],@"facebookid",date,@"dateid", nil];
-//    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
-//        NSLog(@"%@",responseObject);
-//    } andFailed:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
+    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:_userInfo.facebookid, nil],@"facebookid",date,@"dateid", nil];
+    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
+        NSLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
     
 //    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
 //    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
