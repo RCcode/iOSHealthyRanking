@@ -43,7 +43,34 @@
     [self getFacebookUserInfo];
     [self getHealthInfo];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillEnterForeground:) name:@"UIApplicationWillEnterForegroundNotification" object:[UIApplication sharedApplication]];
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)_applicationWillEnterForeground:(NSNotification *)notification
+{
+    if (!_userInfo) {
+        _userInfo = [[UserInfo alloc]init];
+        NSString *facebookid = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookid"];
+        NSString *facebookname = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookname"];
+        NSString *mainurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"mainurl"];
+        NSString *headurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"headurl"];
+        if (facebookid) {
+            _userInfo.facebookid = facebookid;
+        }
+        if (facebookname) {
+            _userInfo.facebookname = facebookname;
+        }
+        if (mainurl) {
+            _userInfo.mainurl = mainurl;
+        }
+        if (headurl) {
+            _userInfo.headurl = headurl;
+        }
+    }
+    _friends = [[NSUserDefaults standardUserDefaults]objectForKey:@"friends"];
+    [self getHealthInfo];
 }
 
 -(void)getHealthInfo
