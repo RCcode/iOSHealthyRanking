@@ -18,7 +18,7 @@
 //#define AdMobID @"ca-app-pub-3747943735238482/9860250656"
 #define AdUrl @"http://ads.rcplatformhk.com/AdlayoutBossWeb/platform/getRcAppAdmob.do"
 
-#define kAppID @"985488133"
+#define kAppID @"994404644"
 #define kAppStoreURLPre @"itms-apps://itunes.apple.com/app/id"
 #define kAppStoreURL [NSString stringWithFormat:@"%@%@", kAppStoreURLPre, kAppID]
 
