@@ -95,8 +95,9 @@
 
 -(void)share
 {
-    NSString *desc = [NSString stringWithFormat:@"我今天跑了%d步,如果想和我一起比赛的话，下载地址",(int)_userInfo.steps];
-    [[FacebookManager shareManager]shareToFacebookWithName:@"快来和我比拼" caption:@"Sports for Facebook" desc:desc link:@"http://bit.ly/1uYvgiC" picture:@""];
+    NSString *desc = [NSString stringWithFormat:@"I ran the %d steps today, Ranked No.%ld in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS",(int)_userInfo.steps,(long)self.rankingNo];
+//    [[FacebookManager shareManager]shareToFacebookWithName:@"challenge with me" caption:@"Sports for Facebook" desc:desc link:@"http://apple.co/1FHbWOS" picture:@""];
+    [[FacebookManager shareManager]shareToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" picture:@""];
 }
 
 - (IBAction)back:(id)sender {

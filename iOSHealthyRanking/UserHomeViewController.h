@@ -13,5 +13,6 @@
 
 @property (nonatomic,strong) UserInfo *userInfo;
 @property (nonatomic) BOOL canShare;
+@property (nonatomic) NSInteger rankingNo;
 
 @end

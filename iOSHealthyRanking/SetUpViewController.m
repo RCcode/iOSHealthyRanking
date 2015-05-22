@@ -129,7 +129,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             
-            NSString *shareContent = @"I ran the 10,000 steps today, Ranked No.5 in my friends.If you want to competition me，Please download（我们应用的链接）";
+            NSString *shareContent = @"I ran the 10,000 steps today, Ranked No.5 in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS";
             NSArray *activityItems = @[shareContent];
             
             UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
