@@ -136,7 +136,7 @@
     
     NSString  * nsStringDate12 =  [NSString  stringWithFormat:@"%d-%d-%d-%d-%d-%d",
                                    
-                                   2015, 05, 22, 15, 46, 01  ];
+                                   2015, 05, 22, 21, 30, 01  ];
     
     NSDate  * todayTwelve=[dateformatter dateFromString: nsStringDate12];
     
