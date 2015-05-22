@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F5139141B0EE18F00F619D3 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5139131B0EE18F00F619D3 /* SetUpViewController.m */; };
 		6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F66705D1B098DDC006E425A /* HealthKit.framework */; };
 		6F6670621B09CBCB006E425A /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6670611B09CBCB006E425A /* HealthManager.m */; };
 		6F73242F1B0AD9F800E2E25C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F73242E1B0AD9F800E2E25C /* MBProgressHUD.m */; };
@@ -82,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F5139121B0EE18F00F619D3 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
+		6F5139131B0EE18F00F619D3 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
 		6F66705D1B098DDC006E425A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		6F6670601B09CBCB006E425A /* HealthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
 		6F6670611B09CBCB006E425A /* HealthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				6F9857A21B0483A7007A151C /* UserHomeViewController.h */,
 				6F9857A31B0483A7007A151C /* UserHomeViewController.m */,
 				6F9857A41B0483A7007A151C /* UserHomeViewController.xib */,
+				6F5139121B0EE18F00F619D3 /* SetUpViewController.h */,
+				6F5139131B0EE18F00F619D3 /* SetUpViewController.m */,
 				6FA3D7B21B0323870042EABD /* Images.xcassets */,
 				6FA3D7A51B0323870042EABD /* Supporting Files */,
 			);
@@ -715,6 +720,7 @@
 				6FA3D8531B03247F0042EABD /* UIView+WebCacheOperation.m in Sources */,
 				6FA3D8471B03247F0042EABD /* SDWebImageCompat.m in Sources */,
 				6FA3D7A81B0323870042EABD /* main.m in Sources */,
+				6F5139141B0EE18F00F619D3 /* SetUpViewController.m in Sources */,
 				6F6670621B09CBCB006E425A /* HealthManager.m in Sources */,
 				6FA3D8441B03247F0042EABD /* MKAnnotationView+WebCache.m in Sources */,
 				6FA3D8331B03247F0042EABD /* RC_RequestManager.m in Sources */,

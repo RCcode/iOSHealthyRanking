@@ -29,8 +29,48 @@
     
     [_lblRCplatformTM setText:@"RCPLATFORM TM"];
     [_lblRCplatformTM setTextColor:colorWithHexString(@"#838079")];
-//    [self fbResync];
+
+    //    [self fbResync];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+//-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSString *isLogin = [[NSUserDefaults standardUserDefaults]objectForKey:@"successLogin"];
+    
+    if (isLogin && [isLogin integerValue] == 1) {
+        
+        [[FacebookManager shareManager]loginSuccess:^{
+            [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"successLogin"];
+        } andFailed:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+        
+        UserInfo *userInfo = [[UserInfo alloc]init];
+        NSString *facebookid = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookid"];
+        NSString *facebookname = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookname"];
+        NSString *mainurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"mainurl"];
+        NSString *headurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"headurl"];
+        if (facebookid) {
+            userInfo.facebookid = facebookid;
+        }
+        if (facebookname) {
+            userInfo.facebookname = facebookname;
+        }
+        if (mainurl) {
+            userInfo.mainurl = mainurl;
+        }
+        if (headurl) {
+            userInfo.headurl = headurl;
+        }
+        
+        RankingViewController *rankingViewController = [[RankingViewController alloc]init];
+        rankingViewController.userInfo = userInfo;
+        RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:rankingViewController];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (IBAction)loginFacebook:(id)sender {

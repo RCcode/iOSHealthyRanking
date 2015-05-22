@@ -95,6 +95,7 @@ static FacebookManager *facebookManager = nil;
 {
     if (_isLogined){
         [FBSession.activeSession closeAndClearTokenInformation];
+        _isLogined = NO;
     }
 }
 

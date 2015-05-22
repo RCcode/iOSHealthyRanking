@@ -11,6 +11,7 @@
 #import "HeaderCell.h"
 #import "UserHomeViewController.h"
 #import "HealthManager.h"
+#import "SetUpViewController.h"
 
 @interface RankingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -282,15 +283,24 @@
         [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
         [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
         if (_dataArray.count >=1) {
+            
             NSString *userId = [[_dataArray objectAtIndex:0] objectForKey:@"facebookid"];
+            
             if ([userId isEqualToString:_userInfo.facebookid]) {
-                ((HeaderCell *)cell).winnerImageView.hidden = NO;
+//                ((HeaderCell *)cell).winnerImageView.hidden = NO;
+                [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
+                [((HeaderCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:_userInfo.headurl] placeholderImage:[UIImage imageNamed:@"people"]];
             }
             else
             {
-                ((HeaderCell *)cell).winnerImageView.hidden = YES;
+//                ((HeaderCell *)cell).winnerImageView.hidden = YES;
+                NSString *mainurl = [[_dataArray objectAtIndex:0] objectForKey:@"mainurl"];
+                NSString *headurl = [[_dataArray objectAtIndex:0] objectForKey:@"headurl"];
+                [((HeaderCell *)cell).coverImageView sd_setImageWithURL:[NSURL URLWithString:mainurl] placeholderImage:[UIImage imageNamed:@"pic_top"]];
+                [((UserCell *)cell).userIconImageView sd_setImageWithURL:[NSURL URLWithString:headurl]placeholderImage:[UIImage imageNamed:@"people"]];
             }
         }
+        
     }
     else
     {
@@ -302,13 +312,13 @@
         
         NSString *userId = [[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"facebookid"];
         if ([userId isEqualToString:_userInfo.facebookid]) {
-            ((UserCell *)cell).hidden = NO;
+            ((UserCell *)cell).shareInviteBtn.hidden = NO;
             [((UserCell *)cell).shareInviteBtn setImage:[UIImage imageNamed:@"Ranking_share"] forState:UIControlStateNormal];
             [((UserCell *)cell).shareInviteBtn addTarget:self action:@selector(shareFacebook:) forControlEvents:UIControlEventTouchUpInside];
         }
         else
         {
-            ((UserCell *)cell).hidden = YES;
+            ((UserCell *)cell).shareInviteBtn.hidden = YES;
         }
         
         [((UserCell *)cell).lblUserName setText:[[_dataArray objectAtIndex:indexPath.row-1] objectForKey:@"facebookname"]];
@@ -409,9 +419,11 @@
 }
 
 - (IBAction)pressUserHome:(id)sender {
-    UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
-    userHomeViewController.userInfo = _userInfo;
-    [self.navigationController pushViewController:userHomeViewController animated:YES];
+//    UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
+//    userHomeViewController.userInfo = _userInfo;
+//    [self.navigationController pushViewController:userHomeViewController animated:YES];
+    SetUpViewController *setUpViewController = [[SetUpViewController alloc]init];
+    [self.navigationController pushViewController:setUpViewController animated:YES];
 }
 
 -(void)shareFacebook:(id)sender

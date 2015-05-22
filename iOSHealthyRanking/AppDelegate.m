@@ -46,29 +46,48 @@
         _userInfo.headurl = headurl;
     }
     
-    NSString *isLogin = [[NSUserDefaults standardUserDefaults]objectForKey:@"successLogin"];
+    LoginViewController *loginViewController = [[LoginViewController alloc]init];
+    self.window.rootViewController = loginViewController;
     
-//    __weak AppDelegate *weakSelf = self;
-    if (isLogin && [isLogin integerValue] == 1) {
-        
-        [[FacebookManager shareManager]loginSuccess:^{
-//            [weakSelf successLogin];
-            [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"successLogin"];
-        } andFailed:^(NSError *error) {
-            NSLog(@"%@",error);
-        }];
-
-        _rankingViewController = [[RankingViewController alloc]init];
-        _rankingViewController.userInfo = _userInfo;
-        RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:_rankingViewController];
-        self.window.rootViewController = nav;
-    }
-    else
-    {
-        LoginViewController *loginViewController = [[LoginViewController alloc]init];
-        self.window.rootViewController = loginViewController;
-    }
     [self.window makeKeyAndVisible];
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    NSString *isLogin = [[NSUserDefaults standardUserDefaults]objectForKey:@"successLogin"];
+//    
+////    __weak AppDelegate *weakSelf = self;
+//    if (isLogin && [isLogin integerValue] == 1) {
+//        
+//        [[FacebookManager shareManager]loginSuccess:^{
+////            [weakSelf successLogin];
+//            [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"successLogin"];
+//        } andFailed:^(NSError *error) {
+//            NSLog(@"%@",error);
+//        }];
+//
+//        _rankingViewController = [[RankingViewController alloc]init];
+//        _rankingViewController.userInfo = _userInfo;
+//        RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:_rankingViewController];
+//        self.window.rootViewController = nav;
+//    }
+//    else
+//    {
+//        LoginViewController *loginViewController = [[LoginViewController alloc]init];
+//        self.window.rootViewController = loginViewController;
+//    }
+//    [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
     
 //    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithObjects:@[@"1000009",@"20150514",@"560",@"6",@"1980",@"5000",@"549001",@"usename8",@"http://8",@"http://28"] forKeys:@[@"facebookid",@"dateid",@"steps",@"floors",@"distance",@"maxSteps",@"totalSteps",@"facebookname",@"headurl",@"mainurl"]];
 //    [[RC_RequestManager shareInstance]postUserDate:dic success:^(id responseObject) {
