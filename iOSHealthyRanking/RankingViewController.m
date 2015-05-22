@@ -219,7 +219,7 @@
         NSDictionary *dic = [rangingArr objectAtIndex:i];
         if (find == NO) {
             if ([[dic objectForKey:@"steps"]integerValue]<_userInfo.steps) {
-                NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:_userInfo.facebookid,@"facebookid",_userInfo.facebookname,@"facebookname",_userInfo.headurl,@"headurl",_userInfo.mainurl,@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
+                NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:[NSString stringWithFormat:@"%@",_userInfo.facebookid],@"facebookid",[NSString stringWithFormat:@"%@",_userInfo.facebookname],@"facebookname",[NSString stringWithFormat:@"%@",_userInfo.headurl],@"headurl",[NSString stringWithFormat:@"%@",_userInfo.mainurl],@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
                 [_serversFriends addObject:user];
                 [_dataArray addObject:user];
                 find = YES;
@@ -228,7 +228,7 @@
         [_serversFriends addObject:dic];
         [_dataArray addObject:dic];
         if (find == NO && i== (rangingArr.count-1)) {
-            NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:_userInfo.facebookid,@"facebookid",_userInfo.facebookname,@"facebookname",_userInfo.headurl,@"headurl",_userInfo.mainurl,@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
+            NSDictionary *user = [[NSDictionary alloc]initWithObjectsAndKeys:[NSString stringWithFormat:@"%@",_userInfo.facebookid],@"facebookid",[NSString stringWithFormat:@"%@",_userInfo.facebookname],@"facebookname",[NSString stringWithFormat:@"%@",_userInfo.headurl],@"headurl",[NSString stringWithFormat:@"%@",_userInfo.mainurl],@"mainurl",[NSString stringWithFormat:@"%d",(int)_userInfo.steps],@"steps", nil];
             [_serversFriends addObject:user];
             [_dataArray addObject:user];
         }
