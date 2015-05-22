@@ -196,9 +196,10 @@ static HealthManager *healthManager = nil;
         NSDate *endDate = [NSDate date];
         NSDate *startDate = [calendar
                              dateByAddingUnit:NSCalendarUnitWeekday
-                             value:-1
+                             value:-7
                              toDate:endDate
                              options:0];
+        
 //        NSDate *startDate = [self getToday];
 //        startDate = anchorDate;
         // Plot the weekly step counts over the past 3 months
