@@ -165,7 +165,8 @@
     
     notification.soundName= UILocalNotificationDefaultSoundName;
     
-    [[UIApplication sharedApplication]   scheduleLocalNotification:notification];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 
