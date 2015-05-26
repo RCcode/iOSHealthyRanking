@@ -74,6 +74,7 @@
 }
 
 - (IBAction)loginFacebook:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Sign for Facebook" label:nil];
      __weak LoginViewController *weakSelf = self;
     [[FacebookManager shareManager]loginSuccess:^{
         [weakSelf successLogin];

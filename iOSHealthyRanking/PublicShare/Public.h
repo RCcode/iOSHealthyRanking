@@ -9,14 +9,7 @@
 #ifndef InstaShot_Public_h
 #define InstaShot_Public_h
 
-#define UmengAPPKey @"551cabecfd98c5cb190010c8"
-//#define kMoreAppID 22005
-#define kMoreAppID 28001
-#define kMoreAppBaseURL @"http://moreapp.rcplatformhk.net/pbweb/app/getIOSAppListNew.do"
-//
-#define AdMobID @""
-//#define AdMobID @"ca-app-pub-3747943735238482/9860250656"
-#define AdUrl @"http://ads.rcplatformhk.com/AdlayoutBossWeb/platform/getRcAppAdmob.do"
+#define UmengAPPKey @"555af7a967e58e372f002d70"
 
 #define kAppID @"994404644"
 #define kAppStoreURLPre @"itms-apps://itunes.apple.com/app/id"
@@ -24,6 +17,19 @@
 
 #define kAppStoreScoreURLPre @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="
 #define kAppStoreScoreURL [NSString stringWithFormat:@"%@%@", kAppStoreScoreURLPre, kAppID]
+
+
+
+
+
+
+//#define kMoreAppID 22005
+#define kMoreAppID 28001
+#define kMoreAppBaseURL @"http://moreapp.rcplatformhk.net/pbweb/app/getIOSAppListNew.do"
+//
+#define AdMobID @""
+//#define AdMobID @"ca-app-pub-3747943735238482/9860250656"
+#define AdUrl @"http://ads.rcplatformhk.com/AdlayoutBossWeb/platform/getRcAppAdmob.do"
 
 //#define kFollwUsAccount @"viddo_rc"
 //#define kFollowUsURL @"http://www.instagram.com/viddo"

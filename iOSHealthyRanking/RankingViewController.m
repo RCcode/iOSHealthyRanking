@@ -177,12 +177,12 @@
 //        NSLog(@"%@",error);
 //    }];
     
-    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:_userInfo.facebookid, nil],@"facebookid",date,@"dateid", nil];
-    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
-        NSLog(@"%@",responseObject);
-    } andFailed:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:[NSArray arrayWithObjects:_userInfo.facebookid, nil],@"facebookid",date,@"dateid", nil];
+//    [[RC_RequestManager shareInstance]getRanking:dic2 success:^(id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } andFailed:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
     
 //    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@[@"1000013",@"1000012"],@"facebookid",@"20150515",@"dateid", nil];
 //    [[RC_RequestManager shareInstance]getRanking:dic1 success:^(id responseObject) {
@@ -454,12 +454,14 @@
 //    UserHomeViewController *userHomeViewController = [[UserHomeViewController alloc]init];
 //    userHomeViewController.userInfo = _userInfo;
 //    [self.navigationController pushViewController:userHomeViewController animated:YES];
+    [IS_MobAndAnalyticsManager event:@"setting" label:nil];
     SetUpViewController *setUpViewController = [[SetUpViewController alloc]init];
     [self.navigationController pushViewController:setUpViewController animated:YES];
 }
 
 -(void)shareFacebook:(id)sender
 {
+    [IS_MobAndAnalyticsManager event:@"rank-share" label:nil];
 //    [[FacebookManager shareManager]shareToFacebookWithName:@"快来和我比拼" caption:@"Sports for Facebook" desc:@"我今天跑了xxx步，排名xx,如果想和我一起比赛的话，下载地址" link:@"http://bit.ly/1uYvgiC" picture:@""];
     NSString *desc = [NSString stringWithFormat:@"I ran the %d steps today, Ranked No.%ld in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS",(int)_userInfo.steps,(long)((UIButton *)sender).tag];
 //    [[FacebookManager shareManager]shareToFacebookWithName:@"challenge with me" caption:@"Sports for Facebook" desc:desc link:@"http://apple.co/1FHbWOS" picture:@""];

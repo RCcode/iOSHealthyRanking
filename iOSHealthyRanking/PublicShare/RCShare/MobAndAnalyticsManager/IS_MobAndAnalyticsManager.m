@@ -26,7 +26,7 @@ static IS_MobAndAnalyticsManager *mobAndAnalyticsManager = nil;
 + (void)event:(NSString *)eventID label:(NSString *)desc{
     
     //友盟
-    [MobClick event:eventID label:nil];
+    [MobClick event:eventID label:desc];
     
 //    //Flurry
 //    [Flurry logEvent:eventID];

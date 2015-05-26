@@ -32,6 +32,7 @@
 
 -(void)returnBtnPressed:(id)sender
 {
+    [IS_MobAndAnalyticsManager event:@"setting-back" label:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -128,7 +129,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
+            [IS_MobAndAnalyticsManager event:@"setting-share" label:nil];
             NSString *shareContent = @"I ran the 10,000 steps today, Ranked No.5 in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS";
             NSArray *activityItems = @[shareContent];
             
@@ -143,6 +144,7 @@
             
         }
         else if (indexPath.row == 1){
+            [IS_MobAndAnalyticsManager event:@"setting-Feedback" label:nil];
             // app名称 版本
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             
@@ -180,9 +182,11 @@
             [self presentViewController:picker animated:YES completion:nil];
 
         } else if (indexPath.row == 2) {
+            [IS_MobAndAnalyticsManager event:@"setting-Rate" label:nil];
             [self gotoAppStorePageRaisal];
         }
     }else if (indexPath.section == 1){
+        [IS_MobAndAnalyticsManager event:@"setting-Quit" label:nil];
         [self logOut];
     }
 }

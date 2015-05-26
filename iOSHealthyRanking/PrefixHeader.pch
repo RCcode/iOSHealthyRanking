@@ -21,8 +21,9 @@
 
 //#import <AssetsLibrary/AssetsLibrary.h>
 //#import <Foundation/Foundation.h>
-//#import "IS_MobAndAnalyticsManager.h"
 //#import "IS_Tools.h"
+
+#import "IS_MobAndAnalyticsManager.h"
 #import "RC_RequestManager.h"
 #import "FacebookManager.h"
 #import "UIImageView+WebCache.h"

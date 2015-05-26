@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "RankingViewController.h"
 //#import "HealthManager.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -33,6 +34,9 @@
     [self registNotification];
     [self addPush];
     application.applicationIconBadgeNumber = 0;
+    
+    //初始化统计相关（友盟、Flurry、GA）
+    [self setupAnalytics];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _userInfo = [[UserInfo alloc]init];
@@ -118,6 +122,17 @@
 //    }];
     
     return YES;
+}
+
+#pragma mark -
+#pragma mark 初始化统计相关
+- (void)setupAnalytics{
+    
+    //友盟
+    [MobClick startWithAppkey:UmengAPPKey reportPolicy:SEND_ON_EXIT channelId:@"App Store"];
+    [MobClick setAppVersion:XcodeAppVersion];
+    [MobClick updateOnlineConfig];
+    
 }
 
 -(void)addPush
