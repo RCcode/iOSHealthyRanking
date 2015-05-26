@@ -15,6 +15,8 @@
 
 @interface RankingViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *friends;
 @property (nonatomic, strong) NSMutableArray *serversFriends;
@@ -45,6 +47,14 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillEnterForeground:) name:@"UIApplicationWillEnterForegroundNotification" object:[UIApplication sharedApplication]];
     
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor lightGrayColor];
+    
+    [self.refreshControl addTarget:self
+                            action:@selector(handleRefresh:)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -215,6 +225,7 @@
             }
         } andFailed:^(NSError *error) {
             NSLog(@"%@",error);
+            [self getRankingSuccess:[NSArray array]];
         }];
     }
     else
@@ -293,6 +304,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [_tableView reloadData];
     });
+    [self endRefresh];
+}
+
+- (void) handleRefresh:(id)sender{
+    [IS_MobAndAnalyticsManager event:@"Pull to Refresh" label:nil];
+    [self getHealthInfo];
+}
+
+- (void)endRefresh
+{
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - UITableView DataSource
