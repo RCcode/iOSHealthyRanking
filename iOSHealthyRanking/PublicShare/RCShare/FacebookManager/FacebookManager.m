@@ -218,6 +218,7 @@ static FacebookManager *facebookManager = nil;
 
 -(void)shareWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link picture:(NSString *)picture
 {
+//    picture = @"https://scontent.xx.fbcdn.net/hphotos-xpf1/t31.0-8/s720x720/11203672_1394708814189542_1807217629958791082_o.jpg";
     NSMutableDictionary * postParams =
     [[NSMutableDictionary alloc] initWithObjectsAndKeys:
      link, @"link",
@@ -291,7 +292,82 @@ static FacebookManager *facebookManager = nil;
         // If permissions present, publish the story
         [self shareWithName:name caption:caption desc:desc link:link picture:picture];
     }
+    
+    
+//    if ([FBSession.activeSession.permissions
+//         indexOfObject:@"publish_actions"] == NSNotFound) {
+//        //No permissions found in session, ask for it
+//        [FBSession.activeSession
+//         requestNewPublishPermissions:
+//         [NSArray arrayWithObject:@"publish_actions"]
+//         defaultAudience:FBSessionDefaultAudienceFriends
+//         completionHandler:^(FBSession *session, NSError *error) {
+//             if (!error) {
+//                 // If permissions granted, publish the story
+//                 [self shareWithName:name caption:caption desc:desc link:link picture:picture];
+//             }
+//         }];
+//    } else {
+//        // If permissions present, publish the story
+//        [self shareWithName:name caption:caption desc:desc link:link picture:picture];
+//    }
 
+}
+
+//- (void)postStatusToFacebook: (NSString*)status withImage: (UIImage*)image{
+- (void)postStatusToFacebookWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link image: (UIImage*)image{
+
+    FBRequestConnection *connection = [[FBRequestConnection alloc] init];
+        
+    // First request uploads the photo.
+    FBRequest *request1 = [FBRequest
+                           requestForUploadPhoto:image];
+    [connection addRequest:request1
+         completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         if (error) {
+//                 [self failedPostStatus];
+             NSLog(@"failed to upload fb photo: %@", error);
+         }
+     }
+            batchEntryName:@"photopost"
+     ];
+    
+    FBRequest *request2 = [FBRequest
+                           requestForGraphPath:@"{result=photopost:$.id}"];
+    [connection addRequest:request2
+         completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         if (!error &&
+             result) {
+             if(error){
+                 NSLog(@"facebook failed to post status: %@", error.description);
+//                     [self failedPostStatus];
+                 return;
+             }
+             
+             NSString *source = [result objectForKey:@"source"];
+//             [self shareToFacebookWithName:@"1111111" caption:@"Sports for Facebook" desc:@"222222" link:@"http://apple.co/1FHbWOS" picture:source];
+             [self shareToFacebookWithName:name caption:caption desc:desc link:link picture:source];
+//                 NSDictionary *params = @{
+//                                          @"message": status
+//                                          ,@"picture": source
+//                                          ,@"caption":@"www.getodo.com"
+//                                          ,@"description":@"A great to-do lists tool."
+//                                          ,@"object_attachment": result[@"id"]
+//                                          };
+//                 [FBRequestConnection startWithGraphPath:@"me/feed" parameters:params HTTPMethod:@"post" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//                     if(error){
+//                         NSLog(@"facebook failed to post status: %@", error.description);
+////                         [self failedPostStatus];
+//                     }
+////                     else [self didPostStatus];
+//                 }];
+         }
+     }
+     ];
+    
+    [connection start];
 }
 
 @end

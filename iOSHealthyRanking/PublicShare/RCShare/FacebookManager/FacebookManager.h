@@ -22,5 +22,6 @@
 -(void)shareToFacebookWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link picture:(NSString *)picture;
 
 //void FacebookProxyShare(const char * name,const char * caption, const char * desc, const char * link, const char * picture);
-
+- (void)postStatusToFacebook: (NSString*)status withImage: (UIImage*)image;
+- (void)postStatusToFacebookWithName:(NSString *)name caption:(NSString *)caption desc:(NSString *)desc link:(NSString *)link image: (UIImage*)image;
 @end

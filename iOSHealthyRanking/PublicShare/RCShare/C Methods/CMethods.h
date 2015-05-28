@@ -27,4 +27,6 @@ NSString *stringFromDate(NSDate *date);
 
 void showLabelHUD(NSString *content);
 
+UIImage *getViewImage(UIView *view);
+
 @end

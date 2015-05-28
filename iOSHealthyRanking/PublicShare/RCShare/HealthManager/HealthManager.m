@@ -222,6 +222,7 @@ static HealthManager *healthManager = nil;
              }
              else
              {
+                 *stop = YES;
                  handler(0);
              }
          }];

@@ -55,6 +55,8 @@
                             action:@selector(handleRefresh:)
                   forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+//    [[FacebookManager shareManager] postStatusToFacebook:@"aaaaaaaa" withImage:[UIImage imageNamed:@"74B10FBCB7E8.jpg"]];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -484,10 +486,12 @@
 -(void)shareFacebook:(id)sender
 {
     [IS_MobAndAnalyticsManager event:@"rank-share" label:nil];
-//    [[FacebookManager shareManager]shareToFacebookWithName:@"快来和我比拼" caption:@"Sports for Facebook" desc:@"我今天跑了xxx步，排名xx,如果想和我一起比赛的话，下载地址" link:@"http://bit.ly/1uYvgiC" picture:@""];
     NSString *desc = [NSString stringWithFormat:@"I ran the %d steps today, Ranked No.%ld in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS",(int)_userInfo.steps,(long)((UIButton *)sender).tag];
 //    [[FacebookManager shareManager]shareToFacebookWithName:@"challenge with me" caption:@"Sports for Facebook" desc:desc link:@"http://apple.co/1FHbWOS" picture:@""];
     [[FacebookManager shareManager]shareToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" picture:@""];
+    
+//    UIImage *image = getViewImage(self.view);
+//    [[FacebookManager shareManager]postStatusToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" image:image];
 }
 
 -(void)inviteFriend
