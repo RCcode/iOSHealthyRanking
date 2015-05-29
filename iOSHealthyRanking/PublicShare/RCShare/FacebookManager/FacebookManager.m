@@ -326,7 +326,7 @@ static FacebookManager *facebookManager = nil;
          completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (error) {
-//                 [self failedPostStatus];
+             showLabelHUD(@"failed");
              NSLog(@"failed to upload fb photo: %@", error);
          }
      }
@@ -342,13 +342,13 @@ static FacebookManager *facebookManager = nil;
              result) {
              if(error){
                  NSLog(@"facebook failed to post status: %@", error.description);
-//                     [self failedPostStatus];
+                 showLabelHUD(@"failed");
                  return;
              }
              
              NSString *source = [result objectForKey:@"source"];
-//             [self shareToFacebookWithName:@"1111111" caption:@"Sports for Facebook" desc:@"222222" link:@"http://apple.co/1FHbWOS" picture:source];
              [self shareToFacebookWithName:name caption:caption desc:desc link:link picture:source];
+             
 //                 NSDictionary *params = @{
 //                                          @"message": status
 //                                          ,@"picture": source

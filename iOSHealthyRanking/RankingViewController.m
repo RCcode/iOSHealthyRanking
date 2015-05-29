@@ -488,10 +488,10 @@
     [IS_MobAndAnalyticsManager event:@"rank-share" label:nil];
     NSString *desc = [NSString stringWithFormat:@"I ran the %d steps today, Ranked No.%ld in my friends.If you want to competition me，Please download http://apple.co/1FHbWOS",(int)_userInfo.steps,(long)((UIButton *)sender).tag];
 //    [[FacebookManager shareManager]shareToFacebookWithName:@"challenge with me" caption:@"Sports for Facebook" desc:desc link:@"http://apple.co/1FHbWOS" picture:@""];
-    [[FacebookManager shareManager]shareToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" picture:@""];
+//    [[FacebookManager shareManager]shareToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" picture:@""];
     
-//    UIImage *image = getViewImage(self.view);
-//    [[FacebookManager shareManager]postStatusToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" image:image];
+    UIImage *image = getViewImage(self.view);
+    [[FacebookManager shareManager]postStatusToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" image:image];
 }
 
 -(void)inviteFriend
