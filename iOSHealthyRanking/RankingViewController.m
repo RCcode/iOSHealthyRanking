@@ -490,7 +490,7 @@
 //    [[FacebookManager shareManager]shareToFacebookWithName:@"challenge with me" caption:@"Sports for Facebook" desc:desc link:@"http://apple.co/1FHbWOS" picture:@""];
 //    [[FacebookManager shareManager]shareToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" picture:@""];
     
-    showMBProgressHUD(@"loading", YES);
+    showMBProgressHUD(nil, YES);
     UIImage *image = getViewImage(self.view);
     [[FacebookManager shareManager]postStatusToFacebookWithName:desc caption:@"Sports for Facebook" desc:@"" link:@"http://apple.co/1FHbWOS" image:image];
 }
