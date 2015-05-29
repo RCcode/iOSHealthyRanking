@@ -194,6 +194,10 @@
 -(void)logOut
 {
     [[FacebookManager shareManager]logOut];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookid"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"facebookname"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"mainurl"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"headurl"];
     [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:@"successLogin"];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }

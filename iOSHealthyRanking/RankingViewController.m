@@ -42,6 +42,27 @@
     _serversFriends = [[NSMutableArray alloc]init];
     _dataArray = [[NSMutableArray alloc]init];
     _friends = [[NSUserDefaults standardUserDefaults]objectForKey:@"friends"];
+    
+    if (!_userInfo) {
+        _userInfo = [[UserInfo alloc]init];
+        NSString *facebookid = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookid"];
+        NSString *facebookname = [[NSUserDefaults standardUserDefaults]objectForKey:@"facebookname"];
+        NSString *mainurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"mainurl"];
+        NSString *headurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"headurl"];
+        if (facebookid) {
+            _userInfo.facebookid = facebookid;
+        }
+        if (facebookname) {
+            _userInfo.facebookname = facebookname;
+        }
+        if (mainurl) {
+            _userInfo.mainurl = mainurl;
+        }
+        if (headurl) {
+            _userInfo.headurl = headurl;
+        }
+    }
+    
     [self getFacebookUserInfo];
     [self getHealthInfo];
     
@@ -70,6 +91,10 @@
         NSString *headurl = [[NSUserDefaults standardUserDefaults]objectForKey:@"headurl"];
         if (facebookid) {
             _userInfo.facebookid = facebookid;
+        }
+        else
+        {
+            [self getFacebookUserInfo];
         }
         if (facebookname) {
             _userInfo.facebookname = facebookname;
@@ -311,6 +336,9 @@
 
 - (void) handleRefresh:(id)sender{
     [IS_MobAndAnalyticsManager event:@"Pull to Refresh" label:nil];
+    if (!_userInfo.facebookid) {
+        [self getFacebookUserInfo];
+    }
     [self getHealthInfo];
 }
 
