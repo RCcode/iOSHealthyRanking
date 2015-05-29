@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 //#include <stdio.h>
 
 @interface CMethods : NSObject
@@ -28,5 +29,8 @@ NSString *stringFromDate(NSDate *date);
 void showLabelHUD(NSString *content);
 
 UIImage *getViewImage(UIView *view);
+
+MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
+void hideMBProgressHUD();
 
 @end

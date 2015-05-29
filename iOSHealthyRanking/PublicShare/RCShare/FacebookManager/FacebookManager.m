@@ -246,10 +246,12 @@ static FacebookManager *facebookManager = nil;
                          NSError *error) {
          if (error) {
              NSLog(@"%@,%@",error,error.description);
+             hideMBProgressHUD();
              showLabelHUD(@"failed");
          }
          else
          {
+             hideMBProgressHUD();
              showLabelHUD(@"success");
          }
 //         NSString *alertText;
@@ -326,6 +328,7 @@ static FacebookManager *facebookManager = nil;
          completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (error) {
+             hideMBProgressHUD();
              showLabelHUD(@"failed");
              NSLog(@"failed to upload fb photo: %@", error);
          }
@@ -342,6 +345,7 @@ static FacebookManager *facebookManager = nil;
              result) {
              if(error){
                  NSLog(@"facebook failed to post status: %@", error.description);
+                 hideMBProgressHUD();
                  showLabelHUD(@"failed");
                  return;
              }
