@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F4A838C1B214DC9004639F2 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A838A1B214DC9004639F2 /* WebViewViewController.m */; };
+		4F4A838D1B214DC9004639F2 /* WebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4A838B1B214DC9004639F2 /* WebViewViewController.xib */; };
+		4F4A83911B215089004639F2 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A838F1B215089004639F2 /* GuideViewController.m */; };
+		4F4A83921B215089004639F2 /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4A83901B215089004639F2 /* GuideViewController.xib */; };
+		4FB236E71B1EEF3300F76945 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB236E61B1EEF3300F76945 /* FacebookSDK.framework */; };
 		6F5139141B0EE18F00F619D3 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5139131B0EE18F00F619D3 /* SetUpViewController.m */; };
 		6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F66705D1B098DDC006E425A /* HealthKit.framework */; };
 		6F6670621B09CBCB006E425A /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6670611B09CBCB006E425A /* HealthManager.m */; };
@@ -69,7 +74,6 @@
 		6FB0C69E1B04BDD300621B1C /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB0C69C1B04BDD300621B1C /* HeaderCell.m */; };
 		6FB0C69F1B04BDD300621B1C /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C69D1B04BDD300621B1C /* HeaderCell.xib */; };
 		6FB0C6A11B04CA9200621B1C /* 74B10FBCB7E8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */; };
-		6FDBD1B21B0484A9003986F2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F4A83891B214DC9004639F2 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
+		4F4A838A1B214DC9004639F2 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		4F4A838B1B214DC9004639F2 /* WebViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewViewController.xib; sourceTree = "<group>"; };
+		4F4A838E1B215089004639F2 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		4F4A838F1B215089004639F2 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		4F4A83901B215089004639F2 /* GuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
+		4FB236E61B1EEF3300F76945 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		6F5139121B0EE18F00F619D3 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
 		6F5139131B0EE18F00F619D3 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
 		6F66705D1B098DDC006E425A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -217,7 +228,6 @@
 		6FB0C69C1B04BDD300621B1C /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
 		6FB0C69D1B04BDD300621B1C /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 74B10FBCB7E8.jpg; sourceTree = "<group>"; };
-		6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA3D8641B0326200042EABD /* libsqlite3.dylib in Frameworks */,
-				6FDBD1B21B0484A9003986F2 /* FacebookSDK.framework in Frameworks */,
+				4FB236E71B1EEF3300F76945 /* FacebookSDK.framework in Frameworks */,
 				6FA3D8341B03247F0042EABD /* libGoogleAdMobAds.a in Frameworks */,
 				6FA3D8541B03247F0042EABD /* libMobClickLibrary.a in Frameworks */,
 				6F66705E1B098DDC006E425A /* HealthKit.framework in Frameworks */,
@@ -284,8 +294,8 @@
 			children = (
 				6F66705D1B098DDC006E425A /* HealthKit.framework */,
 				6FB0C6A01B04CA9200621B1C /* 74B10FBCB7E8.jpg */,
-				6FDBD1B11B0484A9003986F2 /* FacebookSDK.framework */,
 				6FA3D8631B0326200042EABD /* libsqlite3.dylib */,
+				4FB236E61B1EEF3300F76945 /* FacebookSDK.framework */,
 				6FA3D7A41B0323870042EABD /* iOSHealthyRanking */,
 				6FA3D7BE1B0323880042EABD /* iOSHealthyRankingTests */,
 				6FA3D7A31B0323870042EABD /* Products */,
@@ -309,10 +319,17 @@
 				6FB0C6901B04B21100621B1C /* View */,
 				6FA3D7CB1B03247F0042EABD /* PublicShare */,
 				6FA3D7A91B0323870042EABD /* AppDelegate.h */,
+				6FA3D82D1B03247F0042EABD /* UMeng */,
 				6FA3D7AA1B0323870042EABD /* AppDelegate.m */,
 				6F9857931B048318007A151C /* LoginViewController.h */,
 				6F9857941B048318007A151C /* LoginViewController.m */,
 				6F9857951B048318007A151C /* LoginViewController.xib */,
+				4F4A83891B214DC9004639F2 /* WebViewViewController.h */,
+				4F4A838A1B214DC9004639F2 /* WebViewViewController.m */,
+				4F4A838B1B214DC9004639F2 /* WebViewViewController.xib */,
+				4F4A838E1B215089004639F2 /* GuideViewController.h */,
+				4F4A838F1B215089004639F2 /* GuideViewController.m */,
+				4F4A83901B215089004639F2 /* GuideViewController.xib */,
 				6F9857981B048372007A151C /* RankingViewController.h */,
 				6F9857991B048372007A151C /* RankingViewController.m */,
 				6F98579A1B048372007A151C /* RankingViewController.xib */,
@@ -423,7 +440,6 @@
 				6FA3D7FC1B03247F0042EABD /* FMDB */,
 				6FA3D8081B03247F0042EABD /* Reachability */,
 				6FA3D80B1B03247F0042EABD /* SDWebImage */,
-				6FA3D82D1B03247F0042EABD /* UMeng */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -547,7 +563,8 @@
 				6FA3D82E1B03247F0042EABD /* libMobClickLibrary.a */,
 				6FA3D82F1B03247F0042EABD /* MobClick.h */,
 			);
-			path = UMeng;
+			name = UMeng;
+			path = PublicShare/SDK/UMeng;
 			sourceTree = "<group>";
 		};
 		6FA3D8561B0325140042EABD /* BaseClass */ = {
@@ -664,7 +681,9 @@
 			files = (
 				6FA3D7B31B0323870042EABD /* Images.xcassets in Resources */,
 				6FB0C69F1B04BDD300621B1C /* HeaderCell.xib in Resources */,
+				4F4A838D1B214DC9004639F2 /* WebViewViewController.xib in Resources */,
 				6FB0C69A1B04B5C900621B1C /* UserCell.xib in Resources */,
+				4F4A83921B215089004639F2 /* GuideViewController.xib in Resources */,
 				6F9857A61B0483A7007A151C /* UserHomeViewController.xib in Resources */,
 				6F9857971B048318007A151C /* LoginViewController.xib in Resources */,
 				6FB0C6A11B04CA9200621B1C /* 74B10FBCB7E8.jpg in Resources */,
@@ -725,6 +744,7 @@
 				6FA3D8441B03247F0042EABD /* MKAnnotationView+WebCache.m in Sources */,
 				6FA3D8331B03247F0042EABD /* RC_RequestManager.m in Sources */,
 				6FA3D8371B03247F0042EABD /* AFHTTPSessionManager.m in Sources */,
+				4F4A838C1B214DC9004639F2 /* WebViewViewController.m in Sources */,
 				6FA3D84C1B03247F0042EABD /* SDWebImagePrefetcher.m in Sources */,
 				6FA3D8321B03247F0042EABD /* IS_MobAndAnalyticsManager.m in Sources */,
 				6F9857A51B0483A7007A151C /* UserHomeViewController.m in Sources */,
@@ -734,6 +754,7 @@
 				6FA3D84B1B03247F0042EABD /* SDWebImageManager.m in Sources */,
 				6FB0C69E1B04BDD300621B1C /* HeaderCell.m in Sources */,
 				6FA3D8501B03247F0042EABD /* UIImage+WebP.m in Sources */,
+				4F4A83911B215089004639F2 /* GuideViewController.m in Sources */,
 				6FA3D8361B03247F0042EABD /* AFHTTPRequestOperationManager.m in Sources */,
 				6FA3D8461B03247F0042EABD /* SDImageCache.m in Sources */,
 			);
@@ -846,8 +867,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = iOSHealthyRanking/iOSHealthyRanking.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: tan hao (XGNU8R48A3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tan hao (XGNU8R48A3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -873,8 +894,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = iOSHealthyRanking/iOSHealthyRanking.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: tan hao (XGNU8R48A3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tan hao (XGNU8R48A3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

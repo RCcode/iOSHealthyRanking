@@ -8,14 +8,17 @@
 
 #import "LoginViewController.h"
 #import "RankingViewController.h"
+#import "WebViewViewController.h"
+#import "GuideViewController.h"
 
 @interface LoginViewController ()
 {
     BOOL m_isLogined;
+    BOOL showGuideThisTime;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *lblInterFaceExplain;
-@property (weak, nonatomic) IBOutlet UILabel *lblRCplatformTM;
+@property (weak, nonatomic) IBOutlet UIImageView *home_bgImageView;
+@property (weak, nonatomic) IBOutlet UIButton *btnSignIn;
 
 @end
 
@@ -23,13 +26,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_lblInterFaceExplain setText:@"This product uses Facebook API but is not endorsed or certified by Facebook"];
-    [_lblInterFaceExplain setTextColor:colorWithHexString(@"#838079")];
-    _lblInterFaceExplain.numberOfLines = 0;
     
-    [_lblRCplatformTM setText:@"RCPLATFORM TM"];
-    [_lblRCplatformTM setTextColor:colorWithHexString(@"#838079")];
+    if(iPhone4)
+    {
+        [_home_bgImageView setImage:[UIImage imageNamed:@"home_bg960"]];
+        NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_btnSignIn attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-88];
+        [self.view addConstraint:constraint];
+    }
+    else
+    {
+        [_home_bgImageView setImage:[UIImage imageNamed:@"home_bg"]];
+        NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_btnSignIn attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-116];
+        [self.view addConstraint:constraint];
 
+    }
+    
+    showGuideThisTime = NO;
     //    [self fbResync];
     // Do any additional setup after loading the view from its nib.
 }
@@ -38,6 +50,14 @@
 //-(void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"firstLunch"] && !showGuideThisTime) {
+        GuideViewController *guideViewController = [[GuideViewController alloc]init];
+        [self presentViewController:guideViewController animated:YES completion:nil];
+        showGuideThisTime = YES;
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"firstLunch"];
+    }
+    
     NSString *isLogin = [[NSUserDefaults standardUserDefaults]objectForKey:@"successLogin"];
     
     if (isLogin && [isLogin integerValue] == 1) {
@@ -90,6 +110,18 @@
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:rankingViewController];
     rankingViewController.userInfo = [[UserInfo alloc]init];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)showTermsOfService:(id)sender {
+    WebViewViewController *webViewController = [[WebViewViewController alloc]init];
+    webViewController.url = @"http://privacy.rcplatformhk.com/policy/SportsForFacebooks_TermsofService.html";
+    [self presentViewController:webViewController animated:YES completion:nil];
+}
+
+- (IBAction)showPrivacyPolicy:(id)sender {
+    WebViewViewController *webViewController = [[WebViewViewController alloc]init];
+    webViewController.url = @"http://privacy.rcplatformhk.com/policy/SportsForFacebook.html";
+    [self presentViewController:webViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
